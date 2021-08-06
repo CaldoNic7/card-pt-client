@@ -1,1 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
+
+button {
+  background: none!important;
+  border: none;
+  padding: 2!important;
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}

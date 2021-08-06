@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
     <head>
-      <title>Example</title>
+      <title>CARDio</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -11,7 +12,45 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
+
     <body>
-      <h1>Browser Template</h1>
+      <div id="top-bar">
+        <h1>CARDio</h1>
+        <!-- code for menu will go here -->
+        <button id="signOutButton" type="button">Sign-Out</button>
+      </div>
+
+      <div id="start-view">
+        <form id="sign-in" class="form-control">
+          <h3 class="h3 text-center">Sign-In</h3>
+          <!-- <label for="signInEmail" class="form-label">Email address</label> -->
+          <input name="credentials[email]" id="signInEmail" type="text" placeholder="example@email.com">
+          <!-- <label for="signInPassword" class="form-label">Password</label> -->
+          <input name="credentials[password]" id="signInPassword" type="password" placeholder="Password">
+          <input type="submit" value="Sign-In">
+        </form>
+        <!-- <button id="sign-up-link">Not a member yet? Sign-Up!</button> -->
+
+      </div>
+
+      <div id="sign-up-view">
+        <form id="sign-up" class="form-control">
+          <h3 class="h3 text-center">Sign-Up</h3>
+          <!-- <label for="signInEmail" class="form-label">Email address</label> -->
+          <input name="credentials[email]" id="signUnEmail" type="text" placeholder="example@email.com">
+          <!-- <label for="signInPassword" class="form-label">Password</label> -->
+          <input name="credentials[password]" id="signUpPassword" type="password" placeholder="Password">
+          <input name="credentials[password_confirmation]" id="confirmSignUpPassword" type="password" placeholder="Confirm Password">
+          <input type="submit" value="Sign-Up">
+        </form>
+        <!-- <button id="sign-in-link">Already a member? Sign-In!</button> -->
+
+      </div>
+
+      <div id ="deck-view" class="collapse">This is the Deck view</div>
+      <div id="profile-view" class="collapse">This is the Profile view</div>
+      <div id="myDecks-view" class="collapse">This is the My Decks view</div>
+      <div id="workouts-view" class="collapse">This is the Workouts view</div>
+
     </body>
 </html>

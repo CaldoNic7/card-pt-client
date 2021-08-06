@@ -8,13 +8,13 @@
 
 ## Important Links
 
-  -[API REPO](https://github.com/CaldoNic7/card-pt)
+  [API REPO](https://github.com/CaldoNic7/card-pt)
 
-  -[Client Repo](https://github.com/CaldoNic7/card-pt-client)
+  [Client Repo](https://github.com/CaldoNic7/card-pt-client)
 
-  -[Deployed API](www.link.com)
+  [Deployed API](www.link.com)
 
-  -[Deployed Client](www.link.com)
+  [Deployed Client](www.link.com)
 
 ## Technologies Used
   
@@ -189,4 +189,10 @@
       ~ hearts
       ~ clubs
       ~ spades
-    
+  
+  ### Styling Links
+  [NAV MENU](https://codepen.io/atcraigwatson/pen/yNXqxY)
+
+  [Hide element on Load](https://stackoverflow.com/questions/23873005/hide-div-by-default-and-show-it-on-click-with-bootstrap)
+
+  [Show/Hide Password](https://web.dev/sign-in-form-best-practices/#password-display)
