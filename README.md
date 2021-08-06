@@ -14,7 +14,7 @@
 
   [Deployed API](www.link.com)
 
-  [Deployed Client](www.link.com)
+  [Deployed Client](https://caldonic7.github.io/card-pt-client/)
 
 ## Technologies Used
   
