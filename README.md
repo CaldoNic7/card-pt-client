@@ -8,13 +8,13 @@
 
 ## Important Links
 
-  -[API REPO] (https://github.com/CaldoNic7/card-pt)
+  -[API REPO](https://github.com/CaldoNic7/card-pt)
 
-  -[Client Repo] (www.link.com)
+  -[Client Repo](https://github.com/CaldoNic7/card-pt-client)
 
-  -[Deployed API] (www.link.com)
+  -[Deployed API](www.link.com)
 
-  -[Deployed Client] (www.link.com)
+  -[Deployed Client](www.link.com)
 
 ## Technologies Used
   
@@ -99,29 +99,34 @@
 
   Version 1 - 8/04/21
 
-  Diagram 1 ![](Images/relationship_diagram/project-2-ERD-1.png)
+  Diagram 1 
+
+  ![](Images/relationship_diagram/project-2-ERD-1.png)
 
 ### Timeline
   #### Version 1
   #### Aug 4 & 5 Planning
     ^ Create README.md
-      ~ description
+      8/5  ~~ description ~~
       ~ important links
-      ~ user Stories
-      ~ wireframes
-      ~ resources
-      ~ erd
-    ^ Develop Timeline
-    * Commit
+      8/5    ~~ api repo link ~~
+      8/5    ~~ client repo link ~~
+        ~ deployed api link
+        ~ deployed client link
+      8/5  ~~ user Stories ~~
+      8/5  ~~ wireframes ~~
+      8/5  ~~ resources ~~
+      8/5  ~~ erd ~~
+      8/5 ^~~ Develop Timeline ~~
   #### Aug 5 Set UP
-    ^ API
-      ~ download express api template
-      ~ create github repo
-      * commit
-    ^ Client
-      ~ download browser template
-      ~ create github repo
-      * commit
+    8/5  ^ API
+      8/5  ~ download express api template
+      8/5  ~ create github repo
+      8/5  * commit
+    8/5  ^ Client
+      8/5  ~ download browser template
+      8/5  ~ create github repo
+      8/5  * commit
    #### Aug 6 & 7 API
     ~ crud resources
     ~ test resource's end points with postman
