@@ -17,7 +17,7 @@ const signIn = function (data) {
   })
 }
 
-const signOut = function () {
+const signOutFromMenu = function () {
   return $.ajax({
     url: `${config.apiUrl}/sign-out`,
     method: 'DELETE',
@@ -27,8 +27,43 @@ const signOut = function () {
   })
 }
 
+const signOutWithButton = function () {
+  return $.ajax({
+    url: `${config.apiUrl}/sign-out`,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
+const changePassword = function (data) {
+  return $.ajax({
+    url: `${config.apiUrl}/change-password`,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data
+  })
+}
+
+const createDeck = function (data) {
+  return $.ajax({
+    url: `${config.apiUrl}/decks`,
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
-  signOut
+  signOutFromMenu,
+  signOutWithButton,
+  changePassword,
+  createDeck
 }

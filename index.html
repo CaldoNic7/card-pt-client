@@ -14,41 +14,100 @@
     </head>
 
     <body>
-      <div id="top-bar">
+    <div id="top-bar">
         <h1>CARDio</h1>
-        <!-- code for menu will go here -->
-        <button id="signOutButton" type="button">Sign-Out</button>
-      </div>
+        <div class="menu-wrap">
+          <input type="checkbox" class="toggler">
+          <div class="hamburger"><div></div></div>
+          <div class="menu">
+            <div>
+              <div>
+                <ul>
+                  <li id="signInFromMenu"><a href="#">Sign-In</a></li>
+                  <li id="signUpFromMenu"><a href="#">Sign-Up</a></li>
+                  <li id="profileButton" class="collapse"><a href="#">Profile</a></li>
+                  <li id="myDecksFromMenu" class="collapse"><a href="#">My Decks</a></li>
+                  <li id="newDeckButton" class="collapse"><a href="#">New Deck</a></li>
+                  <li id="signOutFromMenu" class="signOut collapse"><a href="#">Sign-Out</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="messages">
+          <h6 id="successMessage" class=" collapse text-center"><strong>success</strong></h6>
+          <h6 id="failMessage" class=" collapse text-center"><strong>fail</strong></h6>
+          <h6 id="infoMessage" class=" collapse text-center"><strong>other</strong></h6>
+        </div>
+    </div>
 
-      <div id="start-view">
+
+      <div id="start-view" class="startView">
         <form id="sign-in" class="form-control">
           <h3 class="h3 text-center">Sign-In</h3>
-          <!-- <label for="signInEmail" class="form-label">Email address</label> -->
-          <input name="credentials[email]" id="signInEmail" type="text" placeholder="example@email.com">
-          <!-- <label for="signInPassword" class="form-label">Password</label> -->
-          <input name="credentials[password]" id="signInPassword" type="password" placeholder="Password">
+
+          <input name="credentials[email]" id="signInEmail" type="text" value="nick@nic.nic">
+          <input name="credentials[password]" id="signInPassword" type="password" value="123">
           <input type="submit" value="Sign-In">
         </form>
-        <!-- <button id="sign-up-link">Not a member yet? Sign-Up!</button> -->
+      <button id="sign-up-link">Not a member yet? Sign-Up!</button>
 
       </div>
 
-      <div id="sign-up-view">
+      <div id="sign-up-view" class="signUpView collapse">
         <form id="sign-up" class="form-control">
           <h3 class="h3 text-center">Sign-Up</h3>
-          <!-- <label for="signInEmail" class="form-label">Email address</label> -->
+
           <input name="credentials[email]" id="signUnEmail" type="text" placeholder="example@email.com">
-          <!-- <label for="signInPassword" class="form-label">Password</label> -->
+
           <input name="credentials[password]" id="signUpPassword" type="password" placeholder="Password">
           <input name="credentials[password_confirmation]" id="confirmSignUpPassword" type="password" placeholder="Confirm Password">
           <input type="submit" value="Sign-Up">
         </form>
-        <!-- <button id="sign-in-link">Already a member? Sign-In!</button> -->
+      <button id="sign-in-link">Already a member? Sign-In!</button>
 
       </div>
 
-      <div id ="deck-view" class="collapse">This is the Deck view</div>
-      <div id="profile-view" class="collapse">This is the Profile view</div>
+      <div id ="deck-view" class="collapse">
+        <form id="deck" class="form-controll">
+          <button id="deckname" type="button">Name</button>
+          <input name="deck[name]" id="deckName" type="text" value="name">
+
+          <button id="diamond" type="button">Diamonds</button>
+          <input name="deck[exercises[]" id="diamondsExercise" type="text" value="1">
+
+          <button id="heart" type="button">Hearts</button>
+          <input name="deck[exercises[]" id="heartsExercise" type="text" value="2">
+
+          <button id="club" type="button">Clubs</button>
+          <input name="deck[exercises[]" id="clubsExerercise" type="text" value="2">
+
+          <button id="spade" type="button">Spades</button>
+          <input name="deck[exercises[]" id="spadesExerercise" type="text" value="3">
+
+          <button id="deckTimer" type="button">Timer</button>
+          <input name="deck[timer]" id="minutes" type="text" value="45">
+
+          <input type="submit" value="Save Deck">
+        </form>
+      </div>
+
+      <div id="profile-view" class="collapse">
+        <button id="my-decks-button" type="button">My Decks</button>
+        <button id="workouts-button" type="button">Workouts</button>
+        <button id="sign-out-button" class="signOut" type="button">Sign-Out</button>
+        <div class="changePassword">
+          <form id="change-password" class="form-control">
+            <h3 class="h3 text-center">Change Your Password</h3>
+            <p id="user-email">user email goes here on successful sign-in</p>
+            <input name="passwords[old]" id="oldPassword" type="password" placeholder="Old Password">
+            <input name="passwords[new]" id="newPassword" type="password"
+              placeholder="New Password">
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+      </div>
+
       <div id="myDecks-view" class="collapse">This is the My Decks view</div>
       <div id="workouts-view" class="collapse">This is the Workouts view</div>
 

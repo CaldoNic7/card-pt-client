@@ -1,36 +1,94 @@
-const { store, hideAndShow } = require('./../store')
+const { store, manageView, manageMenuView } = require('./../store')
+const { success, fail, setSuccessMessage, setFailMessage } = require('./../messages')
 
 const onSignUpSuccess = function (response) {
-  console.log(response)
-  console.log('sign-up success')
   store.email = response.user.email
-  hideAndShow($('#sign-up-view'), $('#start-view'))
-  $('.form-control').trigger('reset')
+  // hides everything but the start view.
+  manageView($('#start-view'))
   $('#signInEmail').val(store.email)
+  // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
+  setSuccessMessage(success.signUp)
 }
 
 const onSignInSuccess = function (response) {
-  console.log(response)
-  console.log('sign-in success')
   store.user = response.user
-  console.log(`token is ${store.user.token}`)
-  $('.form-control').trigger('reset')
-  hideAndShow($('#start-view'), $('#deck-view'))
+  // on successful sign in hides sign-in and sign-up options and shows the rest.
+  manageMenuView()
+  // hides everything but the deck-view.
+  manageView($('#deck-view'))
+  // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
+  setSuccessMessage(success.signIn)
 }
 
-const onSignOutSuccess = function (response) {
+const onSignOutFromMenuSuccess = function () {
+  // click the menu icon to close it on successful sign-out
+  $('.toggler').trigger('click')
+  // on successful sign out shows sign-in and sing-up options and hides the rest.
+  manageMenuView()
+  // hides everything but the start view.
+  manageView($('#start-view'))
+  // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
+  setSuccessMessage(success.signOut)
+}
+const onSignOutButtonSuccess = function () {
+  // on successful sign out shows sign-in and sing-up options and hides the rest.
+  manageMenuView()
+  // hides everything but the start view.
+  manageView($('#start-view'))
+  // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
+  setSuccessMessage(success.signOut)
+}
+
+const onCreateDeckSuccess = function (response) {
+  store.deck = response.deck
+  // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
+  setSuccessMessage(success.deckSave)
+}
+
+const onChangePasswordSuccess = function (response) {
+  // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
+  setSuccessMessage(success.changePW)
+}
+
+const onSignUpFail = function (response) {
   console.log(response)
-  hideAndShow($('#deck-view'), $('#start-view'))
-  console.log('sign-out success')
+  // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
+  setFailMessage(fail.signUp)
 }
 
-const onFailure = function (response) {
-  console.log('something failed')
+const onSignInFail = function (response) {
+  console.log(response)
+  // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
+  setFailMessage(fail.signIn)
+}
+
+const onSignOutFail = function (response) {
+  console.log(response)
+  // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
+  setFailMessage(fail.signOut)
+}
+const onChangePasswordFail = function (response) {
+  console.log(response)
+  // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
+  setFailMessage(fail.general)
+}
+
+const onCreateDeckFail = function (response) {
+  console.log(response)
+  // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
+  setFailMessage(fail.deckSave)
 }
 
 module.exports = {
   onSignUpSuccess,
   onSignInSuccess,
-  onSignOutSuccess,
-  onFailure
+  onSignOutFromMenuSuccess,
+  onSignOutButtonSuccess,
+  onCreateDeckSuccess,
+  onChangePasswordSuccess,
+  onSignUpFail,
+  onSignInFail,
+  onSignOutFail,
+  onChangePasswordFail,
+  onCreateDeckFail
 }

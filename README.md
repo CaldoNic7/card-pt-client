@@ -1,36 +1,42 @@
-# Card PT: a card game like no other!
+># Card PT: a card game like no other!
 
-## Description
+>>## Description
 
   This application enables the user to set up a killer workout with nothing but their mobile device and their body. The simple design and intuitive functionality make setting up a custom workout with whatever equipment is available, or with no equipment at all, a smooth process, allowing the user to focus on their godly gains instead of figuring out a complex routine for the day. Users can use it as a supplemental workout with a quick quarter deck round or they can crush an entire group with a full deck round. 
 
   I wanted to create this app because I loved (and hated) card pt when I ran physical training for my team while in the Army, but I often forgot to bring a deck of cards or the cards would get torn up, this way it's right there on your phone nothing extra needed.
 
-## Important Links
+>>## Important Links
 
-  [API REPO](https://github.com/CaldoNic7/card-pt)
+  + [API REPO](https://github.com/CaldoNic7/card-pt)
 
-  [Client Repo](https://github.com/CaldoNic7/card-pt-client)
+  + [Client Repo](https://github.com/CaldoNic7/card-pt-client)
 
-  [Deployed API](www.link.com)
+  + [Deployed API](www.link.com)
 
-  [Deployed Client](https://caldonic7.github.io/card-pt-client/)
+  + [Deployed Client](https://caldonic7.github.io/card-pt-client/)
 
-## Technologies Used
+>>## Technologies Used
   
-  jQuery
-  HTML/CSS
-  Bootstrap
-  Javascript
-  Express
-  Mongoose
-  Mongodb
+  + jQuery
 
-## Planning
+  + HTML/CSS
+
+  + Bootstrap
+  
+  + Javascript
+  
+  + Express
+  
+  + Mongoose
+  
+  + Mongodb
+
+>>## Planning
   
   Version 1 - August 5th 2021
 
-### User Stories
+>>>### User Stories
   As a user I want to be able to ...
       1. Create an account
       2. Change my password
@@ -46,21 +52,29 @@
       12. Easily see each deck and it's assigned exercises and choose between them
       13. ...
 
-### Wireframes
+>>>### Wireframes
+  >>>>#### Version 1 - 8/04/21 
+  >>>>>views 1 and 2 
 
-  Wireframe Version 1 - 8/04/21 
+  ![](Images/wireframe/project-2-wireframe-pg-1and2.png)
 
-  views 1 and 2 ![](Images/wireframe/project-2-wireframe-pg-1and2.png)
-  views 3 and 4 ![](Images/wireframe/project-2-wireframe-pg-3and4.png)
-  views 5 and 6 ![](Images/wireframe/project-2-wireframe-pg-5and6.png)
-  view 7 ![](Images/wireframe/project-2-wireframe-pg-7.png)
+  >>>>>views 3 and 4 
+  
+  ![](Images/wireframe/project-2-wireframe-pg-3and4.png)
 
-<!-- ### Unsolved Problems -->
+  >>>>>views 5 and 6 
+  
+  ![](Images/wireframe/project-2-wireframe-pg-5and6.png)
 
-### Resources and Entity Relationship Diagrams (ERD)
+  >>>>>view 7 
+  
+  ![](Images/wireframe/project-2-wireframe-pg-7.png)
 
-  ### Resources
-  #### User
+<!-- >>>### Unsolved Problems -->
+
+>>## Resources and Entity Relationship Diagrams (ERD)
+  >>>### Resources
+  >>>>#### User
     user: {
      email: {
        type: String,
@@ -71,7 +85,9 @@
        required: true
      } 
     }
-  #### Deck
+
+  >>>>#### Deck
+
     deck: {
       name: {
       type: String,
@@ -84,7 +100,10 @@
     timer: Number,
     personalRecord: [a pr sub-document]
     }
-  #### Personal Record (pr) sub-document
+
+  >>>>#### Personal Record (pr) sub-document
+
+
     pr sub-document: {
       deckName: String,
       date: Date,
@@ -95,17 +114,15 @@
 
 
 
-  ### ERD
-
-  Version 1 - 8/04/21
-
-  Diagram 1 
+  >>>### ERD
+  >>>>#### Version 1 - 8/04/21
+  >>>>>##### Diagram 1 
 
   ![](Images/relationship_diagram/project-2-ERD-1.png)
 
-### Timeline
-  #### Version 1
-  #### Aug 4 & 5 Planning
+>>>### Timeline
+  >>>>#### Version 1
+  >>>>#### Aug 4 & 5 Planning
     ^ Create README.md
       8/5  ~~ description ~~
       ~ important links
@@ -118,7 +135,9 @@
       8/5  ~~ resources ~~
       8/5  ~~ erd ~~
       8/5 ^~~ Develop Timeline ~~
-  #### Aug 5 Set UP
+      
+  >>>>#### Aug 5 Set UP
+
     8/5  ^ API
       8/5  ~ download express api template
       8/5  ~ create github repo
@@ -127,7 +146,9 @@
       8/5  ~ download browser template
       8/5  ~ create github repo
       8/5  * commit
-   #### Aug 6 & 7 API
+
+   >>>>#### Aug 6 & 7 API
+
     ~ crud resources
     ~ test resource's end points with postman
       * commit
@@ -137,7 +158,9 @@
     ~ test resource's end points with postman
       *commit
     ~ deploy to heroku
-  #### Aug 8 - 10 Client
+
+  >>>>#### Aug 8 - 10 Client
+
     ^ aug 8 (User Account Actions)
       ~ sign-up
         * commit
@@ -164,14 +187,14 @@
       ~ testing/troubleshooting/debugging
       ~ styling
 
-## Styling
-  ### Fonts
+>>## Styling
+  >>>### Fonts
     ^ header fonts
     ^ body fonts
     ^ accent fonts
 
 
-  ### Colors
+  >>>### Colors
     ^ background colors
      
     ^ font colors
@@ -182,7 +205,7 @@
     
     ^ accent colors
 
-  ### Images
+  >>>### Images
     ^ background
     ^ card icons
       ~ diamonds
@@ -190,9 +213,16 @@
       ~ clubs
       ~ spades
   
-  ### Styling Links
-  [NAV MENU](https://codepen.io/atcraigwatson/pen/yNXqxY)
+  >>>### Styling Links
 
-  [Hide element on Load](https://stackoverflow.com/questions/23873005/hide-div-by-default-and-show-it-on-click-with-bootstrap)
+  + [NAV MENU TUTORIAL](https://www.youtube.com/watch?v=DZg6UfS5zYg)
 
-  [Show/Hide Password](https://web.dev/sign-in-form-best-practices/#password-display)
+  + [Goal NAV MENU](https://codepen.io/atcraigwatson/pen/yNXqxY)
+
+  + [Hide element on Load](https://stackoverflow.com/questions/23873005/hide-div-by-default-and-show-it-on-click-with-bootstrap)
+
+  + [Show/Hide Password](https://web.dev/sign-in-form-best-practices/#password-display)
+
+  + [Success/Error Messages](https://codepen.io/alexpivtorak/pen/ByJLoL)
+
+  + [Success/Error Messages Alertify.js](https://alertifyjs.com/)

@@ -2,37 +2,67 @@ const getFormFields = require('./../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 
-
 // onSignUp
 const onSignUp = function (e) {
   e.preventDefault()
-  console.log('i am getting to the onSignup function')
   const data = getFormFields(this)
   // const password = data.credentials.password
   // $('#signInPassword').val(password)
 
   api.signUp(data)
     .then(ui.onSignUpSuccess)
-    .catch(console.log('in catch for signUp'))
+    .catch(ui.onSignUpFail)
 }
+
 // onSignIn
 const onSignIn = function (e) {
   e.preventDefault()
   const data = getFormFields(this)
-
   api.signIn(data)
     .then(ui.onSignInSuccess)
-    .catch(console.log('in catch for sign-in'))
+    .catch(ui.onSignInFail)
 }
+
 // onSignOut
-const onSignOut = function () {
-  api.signOut()
-    .then(ui.onSignOutSuccess)
-    .catch(console.log('in catch for sign-out '))
+const onSignOutFromMenu = function () {
+  api.signOutFromMenu()
+    .then(ui.onSignOutFromMenuSuccess)
+    .catch(ui.onSignOutFail)
+}
+
+// onSignOutButton
+const onSignOutButton = function () {
+  api.signOutWithButton()
+    .then(ui.onSignOutButtonSuccess)
+    .catch(ui.onSignOutFail)
+}
+
+// onChangePassword
+const onChangePassword = function (e) {
+  e.preventDefault()
+  const data = getFormFields(this)
+  console.log(data)
+
+  api.changePassword(data)
+    .then(ui.onChangePasswordSuccess)
+    .catch(ui.onChangePasswordFail)
+}
+
+// onDeckCreation
+const onDeckCreation = function (e) {
+  e.preventDefault()
+  const data = getFormFields(this)
+  api
+    .createDeck(data)
+    .then(ui.onCreateDeckSuccess)
+    .catch(ui.onCreateDeckFail)
 }
 
 module.exports = {
   onSignUp,
   onSignIn,
-  onSignOut
+  onSignOutFromMenu,
+  onSignOutButton,
+  onChangePassword,
+  onDeckCreation
 }
