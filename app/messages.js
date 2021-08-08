@@ -1,10 +1,11 @@
 
 const success = {
   signIn: 'Success! You are now signed in!',
-  signOut: 'Thank\'s for using CARDio!, you are now signed out',
-  signUp: 'Thank\'s for joining! Now sign-in, create your deck and crush a workout!',
-  changePW: 'Success! You\'re password has been updated',
-  deckSave: 'Deck saved.'
+  signOut: 'Thank\'s for using CARDio! You are now signed out',
+  signUp: 'Thank\'s for joining CARDio! Now sign-in, create your deck and crush a workout!',
+  changePW: 'Success! Your password has been updated',
+  deckSave: 'Deck saved.',
+  indexDecks: 'Request completed successfully. Here are your decks'
 }
 
 const fail = {
@@ -12,7 +13,8 @@ const fail = {
   signUp: 'Sign-Up failed. Please try again.',
   signIn: 'Sign-In failed. Please try again',
   signOut: 'sign-Out failed. Please try again',
-  deckSave: 'Could not save deck. Please check that you have filled out all required fields and try again'
+  deckSave: 'Could not save deck. Please check that you have filled out all required fields and that the information is the correct data type and then try again',
+  indexDecks: 'Sorry, we were unable to show your decks. Please try again.'
 }
 
 // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage if it happens to be showing.

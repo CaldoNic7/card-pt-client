@@ -7,31 +7,44 @@ const hideAndShow = (e1, e2) => {
   e2.show()
 }
 
+const views = {
+  startView: $('#start-view'),
+  signUpView: $('#sign-up-view'),
+  deckView: $('#deck-view'),
+  changePasswordView: $('#change-password-view'),
+  myDecksView: $('#my-decks-view'),
+  workoutsView: $('#workouts-view')
+}
+
 //  hides all views and accepts a single jquery element to show. Also resets all form fields
-const manageView = (elementToShow) => {
-  $('.form-control').trigger('reset')
-  $('#start-view').hide()
-  $('#sign-up-view').hide()
-  $('#deck-view').hide()
-  $('#profile-view').hide()
-  $('#myDecks-view').hide()
-  $('#workouts-view').hide()
-  elementToShow.show()
+const manageView = (viewToShow) => {
+  views.startView.hide()
+  views.signUpView.hide()
+  views.deckView.hide()
+  views.changePasswordView.hide()
+  views.myDecksView.hide()
+  views.workoutsView.hide()
+  viewToShow.show()
 }
 
 // toggles menu items between show and hide to be the opposite of whatever it is now.
 const manageMenuView = () => {
   $('#signInFromMenu').toggle()
   $('#signUpFromMenu').toggle()
-  $('#profileButton').toggle()
+  $('#changePasswordButton').toggle()
   $('#myDecksFromMenu').toggle()
   $('#newDeckButton').toggle()
   $('#signOutFromMenu').toggle()
 }
 
+// reset forms
+const formReset = () => $('.form-control').trigger('reset')
+
 module.exports = {
   store,
   hideAndShow,
   manageView,
-  manageMenuView
+  manageMenuView,
+  formReset,
+  views
 }

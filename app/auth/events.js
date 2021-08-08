@@ -58,11 +58,18 @@ const onDeckCreation = function (e) {
     .catch(ui.onCreateDeckFail)
 }
 
+const onIndexDecksFromMenu = function () {
+  api.IndexDecksFromMenu()
+    .then(ui.onIndexDecksFromMenuSuccess)
+    .catch(ui.onIndexDecksFail)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOutFromMenu,
   onSignOutButton,
   onChangePassword,
-  onDeckCreation
+  onDeckCreation,
+  onIndexDecksFromMenu
 }

@@ -12,7 +12,7 @@
 
   + [Client Repo](https://github.com/CaldoNic7/card-pt-client)
 
-  + [Deployed API](www.link.com)
+  + [Deployed API](https://guarded-shore-34888.herokuapp.com/)
 
   + [Deployed Client](https://caldonic7.github.io/card-pt-client/)
 
@@ -70,7 +70,9 @@
   
   ![](Images/wireframe/project-2-wireframe-pg-7.png)
 
-<!-- >>>### Unsolved Problems -->
+>>>### Unsolved Problems/Things to do
+    + move change password to nav menu instead of having it's own view
+    + 
 
 >>## Resources and Entity Relationship Diagrams (ERD)
   >>>### Resources
@@ -123,13 +125,13 @@
 >>>### Timeline
   >>>>#### Version 1
   >>>>#### Aug 4 & 5 Planning
-    ^ Create README.md
+    8/6 ~~ ^ Create README.md ~~
       8/5  ~~ description ~~
-      ~ important links
+      8/6 ~~ important links ~~
       8/5    ~~ api repo link ~~
       8/5    ~~ client repo link ~~
-        ~ deployed api link
-        ~ deployed client link
+      8/5 ~~ deployed api link ~~
+      8/5 ~~ deployed client link ~~
       8/5  ~~ user Stories ~~
       8/5  ~~ wireframes ~~
       8/5  ~~ resources ~~
@@ -149,34 +151,34 @@
 
    >>>>#### Aug 6 & 7 API
 
-    ~ crud resources
-    ~ test resource's end points with postman
-      * commit
-    ~ add the relationship to a user
-      * commit
-    ~ add user ownership to resource controller
-    ~ test resource's end points with postman
-      *commit
-    ~ deploy to heroku
+    8/5 ~~ crud resources ~~
+    8/5 ~~ test resource's end points with postman ~~
+    8/5   * commit
+    8/5 ~~ add the relationship to a user ~~
+    8/5  * commit
+    8/5 ~~ add user ownership to resource controller ~~
+    8/5 ~~ test resource's end points with postman ~~
+     8/5 *commit
+    8/6 ~~ deploy to heroku ~~
 
   >>>>#### Aug 8 - 10 Client
 
     ^ aug 8 (User Account Actions)
-      ~ sign-up
+      8/6 ~~ sign-up ~~
         * commit
-      ~ sign-in
-        ~commit
-      ~ sign-out
+      8/6 ~~ sign-in ~~
         * commit
-      ~ change password
+      8/6  ~~ sign-out ~~
         * commit
-      ~ all api calls have success or failure messages
+      8/7 ~~ change password ~~
         * commit
-      ~ deploy to github repo
+      8/7 ~~ all api calls have success or failure messages ~~
+        * commit
+       ~ deploy to github repo
     ^ aug 9 (Resource Functionality)
-      ~ Create resource 
+      8/6 ~~ Create resource ~~
         * commit
-      ~ get all owned resources
+      8/7 ~~ get all owned resources ~~
         * commit
       ~ delete single resource
         * commit
@@ -206,12 +208,13 @@
     ^ accent colors
 
   >>>### Images
-    ^ background
-    ^ card icons
-      ~ diamonds
-      ~ hearts
-      ~ clubs
-      ~ spades
+  >>>>#### Backgrounds
+  + [header background](https://stock.adobe.com/images/the-suits-of-the-deck-of-playing-cards-on-background-of-splashing-vector-illustration/223397977)
+  >>>> #### Card Icons
+  + diamonds
+  + hearts
+  + clubs
+  + spades
   
   >>>### Styling Links
 

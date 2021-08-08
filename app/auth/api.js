@@ -58,6 +58,15 @@ const createDeck = function (data) {
     data
   })
 }
+const IndexDecksFromMenu = function () {
+  return $.ajax({
+    url: `${config.apiUrl}/decks`,
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
 
 module.exports = {
   signUp,
@@ -65,5 +74,6 @@ module.exports = {
   signOutFromMenu,
   signOutWithButton,
   changePassword,
-  createDeck
+  createDeck,
+  IndexDecksFromMenu
 }
