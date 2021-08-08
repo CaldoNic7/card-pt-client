@@ -17,17 +17,7 @@ const signIn = function (data) {
   })
 }
 
-const signOutFromMenu = function () {
-  return $.ajax({
-    url: `${config.apiUrl}/sign-out`,
-    method: 'DELETE',
-    headers: {
-      Authorization: 'Bearer ' + store.user.token
-    }
-  })
-}
-
-const signOutWithButton = function () {
+const signOut = function () {
   return $.ajax({
     url: `${config.apiUrl}/sign-out`,
     method: 'DELETE',
@@ -58,7 +48,7 @@ const createDeck = function (data) {
     data
   })
 }
-const IndexDecksFromMenu = function () {
+const IndexDecks = function () {
   return $.ajax({
     url: `${config.apiUrl}/decks`,
     method: 'GET',
@@ -71,9 +61,8 @@ const IndexDecksFromMenu = function () {
 module.exports = {
   signUp,
   signIn,
-  signOutFromMenu,
-  signOutWithButton,
+  signOut,
   changePassword,
   createDeck,
-  IndexDecksFromMenu
+  IndexDecks
 }

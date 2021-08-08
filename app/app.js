@@ -34,7 +34,7 @@ $(() => {
     // go to sign-up view
     $('#signUpFromMenu').on('click', () => {
       formReset()
-      // clicks the menu icon to close it when the signUpFromMenu button is clicked
+      // clicks the menu icon to close
       $('.toggler').trigger('click')
       // hides everything but sign-up view
       manageView(views.signUpView)
@@ -43,31 +43,24 @@ $(() => {
     // go to start view
     $('#signInFromMenu').on('click', () => {
       formReset()
-      // clicks the menu icon to close it when the signInFromMenu button is clicked
+      // clicks the menu icon to close it
       $('.toggler').trigger('click')
       // hides everything but start view
       manageView(views.startView)
     })
     // sign-out
-    $('#signOutFromMenu').on('click', authEvents.onSignOutFromMenu)
+    $('#signOut').on('click', authEvents.onSignOut)
 
     // go to change password view
     $('#changePasswordButton').on('click', () => {
       formReset()
       // hides everything except the change password view
       manageView(views.changePasswordView)
-      // clicks the menu icon to close it when the signInFromMenu button is clicked
+      // clicks the menu icon to close it
       $('.toggler').trigger('click')
     })
     // go to my decks view
-    $('#myDecksFromMenu').on('click', authEvents.onIndexDecksFromMenu)
-    // () => {
-    //   formReset()
-    //   // hides everything except the my decks view
-    //   manageView(views.myDecksView)
-    //   // clicks the menu icon to close it when the My Decks button is clicked
-    //   $('.toggler').trigger('click')
-    // })
+    $('#myDecks').on('click', authEvents.onIndexDecks)
 
     // goes to deck view to create a new deck
     $('#newDeckButton').on('click', () => {

@@ -24,9 +24,9 @@ const onSignIn = function (e) {
 }
 
 // onSignOut
-const onSignOutFromMenu = function () {
-  api.signOutFromMenu()
-    .then(ui.onSignOutFromMenuSuccess)
+const onSignOut = function () {
+  api.signOut()
+    .then(ui.onSignOutSuccess)
     .catch(ui.onSignOutFail)
 }
 
@@ -58,18 +58,18 @@ const onDeckCreation = function (e) {
     .catch(ui.onCreateDeckFail)
 }
 
-const onIndexDecksFromMenu = function () {
-  api.IndexDecksFromMenu()
-    .then(ui.onIndexDecksFromMenuSuccess)
+const onIndexDecks = function () {
+  api.IndexDecks()
+    .then(ui.onIndexDecksSuccess)
     .catch(ui.onIndexDecksFail)
 }
 
 module.exports = {
   onSignUp,
   onSignIn,
-  onSignOutFromMenu,
+  onSignOut,
   onSignOutButton,
   onChangePassword,
   onDeckCreation,
-  onIndexDecksFromMenu
+  onIndexDecks
 }

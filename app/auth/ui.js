@@ -22,7 +22,7 @@ const onSignInSuccess = function (response) {
   setSuccessMessage(success.signIn)
 }
 
-const onSignOutFromMenuSuccess = function () {
+const onSignOutSuccess = function () {
   formReset()
   // click the menu icon to close it on successful sign-out
   $('.toggler').trigger('click')
@@ -56,7 +56,7 @@ const onCreateDeckSuccess = function (response) {
   setSuccessMessage(success.deckSave)
 }
 
-const onIndexDecksFromMenuSuccess = function (response) {
+const onIndexDecksSuccess = function (response) {
   console.log(response)
   const decks = response.decks
   console.log(decks)
@@ -140,11 +140,11 @@ const onIndexDecksFail = function (response) {
 module.exports = {
   onSignUpSuccess,
   onSignInSuccess,
-  onSignOutFromMenuSuccess,
+  onSignOutSuccess,
   onSignOutButtonSuccess,
   onChangePasswordSuccess,
   onCreateDeckSuccess,
-  onIndexDecksFromMenuSuccess,
+  onIndexDecksSuccess,
   onSignUpFail,
   onSignInFail,
   onSignOutFail,

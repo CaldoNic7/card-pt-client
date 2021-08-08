@@ -32,9 +32,9 @@ const manageMenuView = () => {
   $('#signInFromMenu').toggle()
   $('#signUpFromMenu').toggle()
   $('#changePasswordButton').toggle()
-  $('#myDecksFromMenu').toggle()
+  $('#myDecks').toggle()
   $('#newDeckButton').toggle()
-  $('#signOutFromMenu').toggle()
+  $('#signOut').toggle()
 }
 
 // reset forms

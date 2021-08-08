@@ -151,43 +151,45 @@
 
    >>>>#### Aug 6 & 7 API
 
-    8/5 ~~ crud resources ~~
-    8/5 ~~ test resource's end points with postman ~~
+    8/5 crud resources 
+    8/5 test resource's end points with postman 
     8/5   * commit
-    8/5 ~~ add the relationship to a user ~~
-    8/5  * commit
-    8/5 ~~ add user ownership to resource controller ~~
-    8/5 ~~ test resource's end points with postman ~~
-     8/5 *commit
-    8/6 ~~ deploy to heroku ~~
+    8/5 add the relationship to a user 
+    8/5   * commit
+    8/5 add user ownership to resource controller 
+    8/5 test resource's end points with postman 
+    8/5   *commit
+    8/6 deploy to heroku 
 
   >>>>#### Aug 8 - 10 Client
 
     ^ aug 8 (User Account Actions)
-      8/6 ~~ sign-up ~~
-        * commit
-      8/6 ~~ sign-in ~~
-        * commit
-      8/6  ~~ sign-out ~~
-        * commit
-      8/7 ~~ change password ~~
-        * commit
-      8/7 ~~ all api calls have success or failure messages ~~
-        * commit
-       ~ deploy to github repo
+      8/6 sign-up 
+           * commit
+      8/6 sign-in
+           * commit
+      8/6 sign-out
+           * commit
+      8/7 change password
+           * commit
+      8/7 all api calls have success or failure messages
+           * commit
+      ~ deploy to github repo
     ^ aug 9 (Resource Functionality)
-      8/6 ~~ Create resource ~~
-        * commit
-      8/7 ~~ get all owned resources ~~
-        * commit
-      ~ delete single resource
-        * commit
-      ~ update single resource
-        * commit
-      ~ deploy to github
+      8/6 Create resource
+           * commit
+      8/7 get all owned resources
+      8/7  * commit
+      ~delete single resource
+           * commit
+      ~update single resource
+           * commit
+      ~get single deck
+           * commit
+      ~deploy to github
     ^ aug 10 (Final Touches)
-      ~ testing/troubleshooting/debugging
-      ~ styling
+      ~testing/troubleshooting/debugging
+      ~styling
 
 >>## Styling
   >>>### Fonts
