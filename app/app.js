@@ -85,6 +85,7 @@ $(() => {
     // 1/2 deck button
     // 3/4 deck button
     // full deck button
+    // update deck
   })
 
   // Change Password view listeners
@@ -96,10 +97,10 @@ $(() => {
     })
 
     // go to workouts view
-    $('#workouts-button').on('click', () => {
-      formReset()
-      manageView(views.workoutsView)
-    })
+    // $('#workouts-button').on('click', () => {
+    //   formReset()
+    //   manageView(views.workoutsView)
+    // })
     // sign-out
     $('#sign-out-button').on('click', authEvents.onSignOutButton)
     // update password
@@ -109,5 +110,23 @@ $(() => {
   // my decks view listeners
   $(() => {
     // edit target deck (will go back to deck view and load all of the data for that deck)
+    $('#my-decks-view').on('click', '.deckNameButton', authEvents.onShowOneDeck)
+    // delete target deck (will make new index api call)
+    $('#my-decks-view').on('click', '.deleteDeckFromDecksViewButton', authEvents.onDeleteDeckFromDecksView)
+  })
+  // update deck view listeners
+  $(() => {
+    $('#update-deck-view').on('submit', '.deckUpdate', authEvents.onDeckUpdate)
+    // name button
+    // diamond button
+    // heart button
+    // club button
+    // spade button
+    // 1/4 deck button
+    // 1/2 deck button
+    // 3/4 deck button
+    // full deck button
+    // delete deck button
+    $('#update-deck-view').on('click', '.deleteDeckButton', authEvents.onDeleteDeck)
   })
 })

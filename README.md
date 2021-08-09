@@ -38,19 +38,19 @@
 
 >>>### User Stories
   As a user I want to be able to ...
-      1. Create an account
-      2. Change my password
-      3. Sign in and out of my account
-      4. Create a deck (or multiple decks) of cards
-      5. Assign each suit a different and custom exercise
-      6. Choose the size of the deck (quarter deck, half deck, three quarter deck, full deck)
-      7. Set a goal time to complete the deck by
-      8. Review past 'games'
-      9. Easily see my personal record (number of cards completed in the shortest amount of time)
-      10. Delete a deck
-      11. Change or update a deck later
-      12. Easily see each deck and it's assigned exercises and choose between them
-      13. ...
+  1. Create an account.
+  2. Change my password.
+  3. Sign in and out of my account.
+  4. Create a deck (or multiple decks) of cards.
+  5. Assign each suit a different and custom exercise.
+  6. Choose the size of the deck (quarter deck, half deck, three quarter deck, full deck).
+  7. Set a goal time to complete the deck by
+  8. Review past workouts
+  9. Easily see my personal record (number of cards completed in the shortest amount of time)
+  10.  Delete a deck
+  11.  Change or update a deck later
+  12.  Easily see each deck and it's assigned exercises and choose between them
+  13.  ...
 
 >>>### Wireframes
   >>>>#### Version 1 - 8/04/21 
@@ -174,17 +174,17 @@
            * commit
       8/7 all api calls have success or failure messages
            * commit
-      ~ deploy to github repo
+      8/7 deploy to github repo
     ^ aug 9 (Resource Functionality)
       8/6 Create resource
            * commit
       8/7 get all owned resources
       8/7  * commit
-      ~delete single resource
+      8/8 delete single resource
            * commit
-      ~update single resource
+      8/8 update single resource
            * commit
-      ~get single deck
+      8/8 get single deck
            * commit
       ~deploy to github
     ^ aug 10 (Final Touches)

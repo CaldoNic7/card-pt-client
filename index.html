@@ -44,60 +44,49 @@
 
       <div id="start-view" class="startView">
         <form id="sign-in" class="form-control">
-          <h3 class="h3 text-center">Sign-In</h3>
-
-          <!-- <input name="credentials[email]" id="signInEmail" type="text" value="nick@nic.nicc"> -->
-
-          <input name="credentials[email]" id="signInEmail" type="text" placeholder="example@email.com">
-
-          <!-- <input name="credentials[password]" id="signInPassword" type="password" value="123"> -->
-
-          <input name="credentials[password]" id="signInPassword" type="password" placeholder="Password">
-
+          <h3 class="h3 text-center">Sign-In</h3><br>
+          <input name="credentials[email]" id="signInEmail" type="text" value="nick@nic.niccc"><br>
+          <!-- <input name="credentials[email]" id="signInEmail" type="text" placeholder="example@email.com"><br> -->
+          <br>
+          <input name="credentials[password]" id="signInPassword" type="password" value="123"><br>
+          <!-- <input name="credentials[password]" id="signInPassword" type="password" placeholder="Password"><br> -->
+          <br>
           <input type="submit" value="Sign-In">
         </form>
       <button id="sign-up-link">Not a member yet? Sign-Up!</button>
       </div>
-
       <div id="sign-up-view" class="signUpView collapse">
         <form id="sign-up" class="form-control">
-          <h3 class="h3 text-center">Sign-Up</h3>
+          <h3 class="h3 text-center">Sign-Up</h3><br>
 
-          <input name="credentials[email]" id="signUnEmail" type="text" placeholder="example@email.com">
-
-
-          <input name="credentials[password]" id="signUpPassword" type="password" placeholder="Password">
-          <input name="credentials[password_confirmation]" id="confirmSignUpPassword" type="password" placeholder="Confirm Password">
+          <input name="credentials[email]" id="signUnEmail" type="text" placeholder="example@email.com"><br>
+          <br>
+          <input name="credentials[password]" id="signUpPassword" type="password" placeholder="Password"><br>
+          <br>
+          <input name="credentials[password_confirmation]" id="confirmSignUpPassword" type="password" placeholder="Confirm Password"><br>
+          <br>
           <input type="submit" value="Sign-Up">
         </form>
       <button id="sign-in-link">Already a member? Sign-In!</button>
 
       </div>
-
       <div id ="deck-view" class="collapse">
         <form id="deck" class="form-control">
           <button id="deckname" type="button">Deck Name</button>
-          <input name="deck[name]" id="deckName" type="text">
-
+          <input name="deck[name]" id="deckName" type="text" value="BlackHearts"><br>
           <button id="diamond" type="button">Diamonds</button>
-          <input name="deck[exercises[]" id="diamondsExercise" type="text">
-
+          <input name="deck[exercises[]" id="diamondsExercise" type="text" value="push-ups"><br>
           <button id="heart" type="button">Hearts</button>
-          <input name="deck[exercises[]" id="heartsExercise" type="text">
-
+          <input name="deck[exercises[]" id="heartsExercise" type="text" value="sit-ups"><br>
           <button id="club" type="button">Clubs</button>
-          <input name="deck[exercises[]" id="clubsExerercise" type="text">
-
+          <input name="deck[exercises[]" id="clubsExerercise" type="text" value="squats"><br>
           <button id="spade" type="button">Spades</button>
-          <input name="deck[exercises[]" id="spadesExerercise" type="text">
-
+          <input name="deck[exercises[]" id="spadesExerercise" type="text"value="burpees"><br>
           <button id="deckTimer" type="button">Timer</button>
-          <input name="deck[timer]" id="minutes" type="text">
-
+          <input name="deck[timer]" id="minutes" type="text"><br>
           <input type="submit" value="Save Deck">
         </form>
       </div>
-
       <div id="change-password-view" class="collapse">
         <!-- <button id="workouts-button" type="button">Workouts</button> -->
         <div class="changePassword">
@@ -111,9 +100,9 @@
           </form>
         </div>
       </div>
-
       <div id="my-decks-view"></div>
-      <div id="workouts-view" class="collapse">This is the Workouts view</div>
 
+      <div id="update-deck-view" class="collapse"></div>
+      <div id="emptyView" class="collapse"></div>
     </body>
 </html>

@@ -58,11 +58,45 @@ const IndexDecks = function () {
   })
 }
 
+const showDeck = function (id) {
+  return $.ajax({
+    url: config.apiUrl + '/decks/' + id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
+const updateDeck = function (id, data) {
+  return $.ajax({
+    url: config.apiUrl + '/decks/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data
+  })
+}
+
+const deleteDeck = function (id) {
+  return $.ajax({
+    url: config.apiUrl + '/decks/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePassword,
   createDeck,
-  IndexDecks
+  IndexDecks,
+  showDeck,
+  updateDeck,
+  deleteDeck
 }

@@ -13,7 +13,8 @@ const views = {
   deckView: $('#deck-view'),
   changePasswordView: $('#change-password-view'),
   myDecksView: $('#my-decks-view'),
-  workoutsView: $('#workouts-view')
+  updateDeckView: $('#update-deck-view'),
+  emptyView: $('#emptyView')
 }
 
 //  hides all views and accepts a single jquery element to show. Also resets all form fields
@@ -23,7 +24,8 @@ const manageView = (viewToShow) => {
   views.deckView.hide()
   views.changePasswordView.hide()
   views.myDecksView.hide()
-  views.workoutsView.hide()
+  views.updateDeckView.hide()
+  views.emptyView.hide()
   viewToShow.show()
 }
 

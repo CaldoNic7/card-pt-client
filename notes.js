@@ -23,33 +23,42 @@ _id: "610c472ed3f47f2246e8e987"
 
 
 // create update form for each indexed deck
- let decksHtml = ''
+
+  let decksHtml = ''
 
   decks.forEach(deck => {
     decksHtml += `
       <div class="deck">
         <form class="form-control">
-          <button type="button">Deck Name</button>
-          <input  class="collapse" type="text" name="deck[exercise[]" value="${deck.name}" required>
-
+          <style>
+            h1 {
+                background: none!important;
+                border: none;
+                padding: 2!important;
+                color: black;
+                text-decoration: underline;
+                cursor: pointer;
+                font-size: 18px;
+              }
+          </style>
+          <div class="deckNameContainer"
+            <h1><button type="button" class="deckNameButton">${deck.name}</button></h1>
+            <input  class="collapse" type="text" name="deck[exercise[]" value="${deck.name}" required>
+          </div><br>
           <button type="button">Diamonds</button>
-          <input type="text" name="deck[exercises[]" value="${deck.exercises[0]}" required>
-
+          <input type="text" name="deck[exercises[]" value="${deck.exercises[0]}" required><br>
           <button type="button">Hearts</button>
-          <input  type="text" name="deck[exercises[]" value="${deck.exercises[1]}" required>
-
+          <input  type="text" name="deck[exercises[]" value="${deck.exercises[1]}" required><br>
           <button type="button">Clubs</button>
-          <input type="text" name="deck[exercises[]" value="${deck.exercises[2]}" required>
-
+          <input type="text" name="deck[exercises[]" value="${deck.exercises[2]}" required><br>
           <button type="button">Spades</button>
-          <input type="text" name="deck[exercises[]" value="${deck.exercises[3]}" required>
-
+          <input type="text" name="deck[exercises[]" value="${deck.exercises[3]}" required><br>
           <button type="button">Timer</button>
-          <input type="text" name="deck[timer]" value="${deck.timer}" required>
-
-          <input type="submit" value="Save Changes">
-
+          <input type="text" name="deck[timer]" value="${deck.timer}" required><br>
+          <input type="submit" value="Save Changes"><br>
         </form>
       </div>
     `
   })
+
+  $('#my-decks-view').html(decksHtml)
