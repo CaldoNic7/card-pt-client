@@ -13,6 +13,7 @@ const onSignUpSuccess = function (response) {
 
 const onSignInSuccess = function (response) {
   store.user = response.user
+  $('#user-email').text(`EMAIL: ${store.user.email}`)
   formReset()
   // on successful sign in hides sign-in and sign-up options and shows the rest.
   manageMenuView()
@@ -48,29 +49,34 @@ const onCreateDeckSuccess = function (response) {
 }
 
 const onIndexDecksSuccess = function (response) {
-  store.decks = response.decks
-  const decks = store.decks
-  console.log(decks)
+  const allDecks = response.decks
+  const decks = []
+  allDecks.forEach(deck => {
+    if (store.user._id === deck.owner) {
+      decks.push(deck)
+    }
+    store.decks = decks
+  })
 
   let decksHtml = ''
 
-  decks.forEach(deck => {
-    if (store.user._id === deck.owner) {
-      decksHtml += `
+  if (decks.length === 0) {
+    decksHtml = `
+      <div id="aceOfSpades" class="outline shadow rounded black">
+        <div class="top"><span class="A">A</span><span>♠</span></div>
+        <h2 id="noDecks" class="red">You haven't created a deck yet!</h2>
+        <h1 id="noDeckSpade">♠</h1>
+        <div id="createNewDeckButton" class="nav_link">Create A New Deck</div>
+        <div class="bottom black"><span>A<span><span>♠</span></div>
+      </div>
+    `
+  } else {
+    decks.forEach(deck => {
+      if (store.user._id === deck.owner) {
+        decksHtml += `
       <div class="deck">
-        <style>
-            h1 {
-                background: none!important;
-                border: none;
-                padding: 2!important;
-                color: black;
-                text-decoration: underline;
-                cursor: pointer;
-                font-size: 18px;
-              }
-          </style>
           <div class="deckNameContainer">
-            <h1><button style="text-transform:uppercase" type="button" class="deckNameButton" data-id=${deck._id}>${deck.name}</button><button type="button" class="deleteDeckFromDecksViewButton" data-id=${deck._id}>Delete Deck</button></h1>
+            <span class="editIcon">edit><button type="button" class="deckNameButton" data-id=${deck._id}>${deck.name}</button><button type="button" class="deleteDeckFromDecksViewButton" data-id=${deck._id}>Delete Deck</button></span>
           </div>
           <div class="diamondsContainer">
             <p style="text-transform:uppercase"><strong>DIAMONDS: </strong> ${deck.exercises[0]}</p>
@@ -89,54 +95,66 @@ const onIndexDecksSuccess = function (response) {
           </div>
       </div>
     `
-    }
-  })
+      }
+    })
+    setSuccessMessage(success.indexDecks)
+  }
 
   $('#my-decks-view').html(decksHtml)
-
   $('.toggler').trigger('click')
   formReset()
   manageView(views.myDecksView)
   // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
-  setSuccessMessage(success.indexDecks)
 }
 
 const onShowDeckSuccess = function (response) {
   store.deck = response.deck
+  if (store.deck.timer === null) {
+    store.deck.timer = ''
+  }
   const deckHtml = `
-    <div class="deck">
-        <form class="deckUpdate form-control">
-          <div class="deckNameContainer">
-            <button type="button">Deck Name</button>
-            <input type="text" name="deck[name]" value="${store.deck.name}" required>
-          </div><br>
-          <div class="diamondsContainer">
-          <button type="button">Diamonds</button>
-          <input type="text" name="deck[exercises[]" value="${store.deck.exercises[0]}" required>
-          </div><br>
-          <div class="heartsContainer">
-          <button type="button">Hearts</button>
-          <input  type="text" name="deck[exercises[]" value="${store.deck.exercises[1]}" required>
-          </div><br>
-          <div class="clubsContainer">
-          <button type="button">Clubs</button>
-          <input type="text" name="deck[exercises[]" value="${store.deck.exercises[2]}" required>
-          </div><br>
-          <div class="spadesContainer">
-          <button type="button">Spades</button>
-          <input type="text" name="deck[exercises[]" value="${store.deck.exercises[3]}" required>
-          </div><br>
-          <div class="timerContainer">
-          <button type="button">Timer</button>
-          <input type="text" name="deck[timer]" value="${store.deck.timer}">
-          </div><br>
-          <div class="submitButtonContainer">
-          <input type="submit" value="Save Changes">
-          <button type="button" class="deleteDeckButton" data-id=${store.deck._id}>Delete Deck</button>
+    <div class="center deck">
+        <h1>${store.deck.name}</h1>
+        <form id="deck" class="deckUpdate form-control">
+          <div class="txt_field">
+            <input id="deckName" name="deck[name]" type="text" value="${store.deck.name}" required>
+            <span class="line"></span>
+            <label for="deckName" type="text">♠<span class="redIcon">♦</span>♣<span class="redIcon">♥</span> Deck
+              Name:</label>
+          </div>
+          <div class="txt_field">
+            <input name="deck[exercises[]" id="spadesExercise" type="text" value="${store.deck.exercises[0]}" required>
+            <span class="line"></span>
+            <label for="spade" type="text">♠ Exercise:</label>
+          </div>
+          <div class="txt_field">
+            <input name="deck[exercises[]" id="diamondsExercise" type="text" value="${store.deck.exercises[1]}" required>
+            <span class="line"></span>
+            <label for="diamond" type="text"><span class="redIcon">♦</span>Exercise:</label>
+          </div>
+          <div class="txt_field">
+            <input name="deck[exercises[]" id="clubsExercise" type="text" value="${store.deck.exercises[2]}" required>
+            <span class="line"></span>
+            <label for="club" type="text">♣ Exercise:</label>
+          </div>
+          <div class="txt_field">
+            <input name="deck[exercises[]" id="heartsExercise" type="text" value="${store.deck.exercises[3]}" required>
+            <span class="line"></span>
+            <label for="heart" type="text"><span class="redIcon">♥</span>Exercise:</label>
+          </div>
+          <div class="txt_field">
+            <input name="deck[timer]" id="minutes" type="text" value="${store.deck.timer}">
+            <span class="line"></span>
+            <label for="timer" type="text">Timer: minutes (ie. 65)</label>
+          </div>
+          <div class="pass">Back to My Decks?</div>
+          <input type="submit" value="Save Deck">
+          <div class="nav_link">
+            Want to delete this deck? <span class="deleteDeckButton" data-id="${store.deck._id}">Delete Deck</span></div>
           </div>
         </form>
-      </div>
-    `
+    </div>
+  `
   $('#update-deck-view').html(deckHtml)
   formReset()
   manageView(views.updateDeckView)
@@ -155,36 +173,41 @@ const onDeleteDeckSuccess = function () {
 }
 
 const onDeleteDeckFromDecksViewSuccess = function (id) {
-  const decks = store.decks
+  let decks = store.decks
+  let removedDeckName = ''
   decks.forEach(deck => {
     if (id === deck._id) {
-      const removeDeck = decks.indexOf(deck)
-      console.log(removeDeck)
-      const removed = decks.splice(removeDeck, 1)
-      store.removed = removed[0].name
-      console.log(store.removed)
-      console.log(decks)
+      removedDeckName = deck.name
     }
   })
-  let decksHtml = ''
+  const newDeck = []
+  decks.forEach(deck => {
+    if (id !== deck._id) {
+      console.log('this is the deck that will be added to the new array', deck)
+      newDeck.push(deck)
+    }
+    store.decks = newDeck
+    decks = store.decks
+  })
 
-  decks.forEach((deck) => {
-    if (store.user._id === deck.owner) {
-      decksHtml += `
+  let decksHtml = ''
+  if (decks.length === 0) {
+    decksHtml = `
+      <div id="aceOfSpades" class="outline shadow rounded black">
+        <div class="top"><span class="A">A</span><span>♠</span></div>
+        <h2 id="noDecks" class="red">You haven't created a deck yet!</h2>
+        <h1 id="noDeckSpade">♠</h1>
+        <button id="createNewDeckButton" class="red">Create A New Deck</button>
+        <div class="bottom black"><span>A<span><span>♠</span></div>
+      </div>
+    `
+  } else {
+    decks.forEach((deck) => {
+      if (store.user._id === deck.owner) {
+        decksHtml += `
       <div class="deck">
-        <style>
-            h1 {
-                background: none!important;
-                border: none;
-                padding: 2!important;
-                color: black;
-                text-decoration: underline;
-                cursor: pointer;
-                font-size: 18px;
-              }
-          </style>
           <div class="deckNameContainer">
-            <h1><button style="text-transform:uppercase" type="button" class="deckNameButton" data-id=${deck._id}>${deck.name}</button><button type="button" class="deleteDeckFromDecksViewButton" data-id=${deck._id}>Delete Deck</button></h1>
+            <span class="editIcon">edit><button type="button" class="deckNameButton" data-id=${deck._id}>${deck.name}</button><button type="button" class="deleteDeckFromDecksViewButton" data-id=${deck._id}>Delete Deck</button></span>
           </div>
           <div class="diamondsContainer">
             <p style="text-transform:uppercase"><strong>DIAMONDS: </strong> ${deck.exercises[0]}</p>
@@ -203,17 +226,17 @@ const onDeleteDeckFromDecksViewSuccess = function (id) {
           </div>
       </div>
     `
-    }
-  })
+      }
+    })
+  }
 
   $('#my-decks-view').html(decksHtml)
 
   $('#failMessage').hide()
-  $('#successMessage').text(`${store.removed}${success.deleteDeck2}`).show()
+  $('#successMessage').text(`${removedDeckName}${success.deleteDeck2}`).show()
   setTimeout(() => {
     $('#successMessage').hide()
   }, 4500)
-  // setSuccessMessage(success.decksViewDelete)
 }
 
 const onSignUpFail = function () {

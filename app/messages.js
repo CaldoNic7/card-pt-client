@@ -22,7 +22,8 @@ const fail = {
   indexDecks: 'Sorry, we were unable to show your decks.',
   showOneDeck: 'Sorry, we were unable to show this deck.',
   updateDeck: 'Sorry, we were unable to save your Updates. Please check that you have filled out all required fields and that the information is the correct data type and then try again.',
-  deleteDeck: 'Sorry, we were unable to delete this deck.'
+  deleteDeck: 'Sorry, we were unable to delete this deck.',
+  noDecks: 'Looks like you haven\'t created a deck yet.'
 }
 
 // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage if it happens to be showing.

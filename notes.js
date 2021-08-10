@@ -62,3 +62,27 @@ _id: "610c472ed3f47f2246e8e987"
   })
 
   $('#my-decks-view').html(decksHtml)
+
+  <div class="center">
+        <h1></h1>
+        <form>
+          <div class="txt_field">
+            <input>
+            <span class="line"></span>
+            <label></label>
+          </div>
+          <div class="txt_field">
+            <input>
+            <span class="line"></span>
+            <label></label>
+          </div>
+          <div class="txt_field">
+            <input>
+            <span class="line"></span>
+            <label></label>
+          </div>
+          <div class="pass"></div>
+          <input type="submit">
+          <div class="nav_link"><span></span></div>
+        </form>
+      </div>

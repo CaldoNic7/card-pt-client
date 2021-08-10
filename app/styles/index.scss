@@ -1,22 +1,306 @@
 @import '~bootstrap/scss/bootstrap';
 :root {
-  --primary-color: rgba(13,110,139,0.75);
-  --overlay-color: rgba(24, 39, 51, 0.85);
+  --primary-color: rgba(204, 0, 51, 0.75);
+  --overlay-color: rgba(0, 0, 0, 0.77);
+  --secondary-color: rgba(204,0,51, 1);
   --menu-speed: 0.75s;
 }
 
+
+body {
+  box-sizing: border-box;
+  display:block;
+  margin: 0;
+  padding: 0;
+  font-family: montserrat;
+  background-image: linear-gradient(95deg, rgb(0, 0, 0),rgba(0, 0, 0, .9),rgba(204,0,51, 1), rgba(255, 0, 75, 1));
+  background-size: 200%;
+  height: 100vh;
+  overflow: hidden;
+  animation: bg-animation 15s infinite alternate-reverse;
+  z-index: -5;
+}
+#top-bar {
+  box-sizing: border-box;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  height: 7vh;
+  width: 100vw;
+  background: white;
+}
+.placeHolder {
+  box-sizing: border-box;
+  position: static;
+  justify-content: center;
+  align-items: center;
+  height: 7vh;
+  width: 100vw;;
+}
+.title {
+  box-sizing: border-box;
+  position: fixed;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 7vh;
+  padding: 5px;
+  margin: 5px auto;
+  color: rgb(0, 0, 0);
+}
+
+#aIcon {
+  color: var(--secondary-color);
+  font-size: 3rem;
+}
+
+// form styling
+.center {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -25%);
+  width: 400px;
+  background: white;
+  border-radius: 7px;
+}
+#change-password-view {
+  position: fixed;
+  top: 57%;
+  left: 50%;
+  transform: translate(-50%, -25%);
+  width: 400px;
+  background: white;
+  border-radius: 7px;
+}
+.center h1{
+  text-align: center;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid silver;
+}
+
+.center form {
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+form .txt_field {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 30px 0;
+}
+
+.txt_field input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+}
+
+.txt_field label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translate&(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.txt_field .line::before{
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, rgb(0,0,0), rgb(204, 0, 51));
+  transition: .5s;
+}
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label  {
+  top: -5px;
+  color: rgb(0, 0, 0);
+  transition: .5s;
+}
+.txt_field input:focus ~ label .redIcon,
+.txt_field input:valid ~ label .redIcon {
+  top: -5px;
+  color: rgb(204, 0, 51);
+  transition: 2s;
+
+}
+.txt_field input:focus ~ .line::before,
+.txt_field input:valid ~ .line::before {
+  width: 100%;
+}
+
+.pass {
+  margin: -5px 0 20px 5px;
+  color: #a6a6a6;
+  cursor: pointer;
+}
+
+.pass:hover {
+  text-decoration:  underline;
+}
+
+input[type="submit"] {
+  width: 100%;
+  height: 50px;
+  border: 2px solid;
+  background-image: linear-gradient(95deg, rgb(0, 0, 0),rgba(0, 0, 0, .9),rgba(204,0,51, 1), rgba(255, 0, 75, 1)) ;
+  background-size: 200%;
+  border-radius: 25px;
+  font-size: 18px;
+  color: #e9f4fb;
+  cursor: pointer;
+  outline: none;
+  animation: bg-animation 14s infinite alternate-reverse;
+}
+input[type="submit"]:hover {
+  border-color: rgba(204, 0, 51, .7);
+  transition: .5s;
+}
+
+@keyframes bg-animation {
+  0%{ background-position: left; }
+  100%{ background-position: right; }
+}
+
+.nav_link{
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.nav_link span{
+  color: var(--secondary-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav_link span:hover {
+  text-decoration: underline;
+}
+// messages styling
+#messages {
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bolder;
+  color: white;
+  height: 7vh;
+  width: 50%;
+  margin: 0 auto;
+  z-index: 4;
+}
+
+#failMessage {
+  color:rgba(204,0,51, .95)
+}
+// decks view css
+.editIcon {
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.deckNameButton {
+  background: none!important;
+  border: none;
+  padding: 2!important;
+  color: black;
+  cursor: pointer;
+  font-size: 24px;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+#aceOfSpades {
+  box-sizing: border-box;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  height: 507px;
+  width: 327px;
+  border-radius: 7%;
+}
+span .A {display: block;}
+
+.shadow {box-shadow: 2px 4px rgba (38, 12, 12, .5);}
+.rounded{ border-radius: 10px;}
+.black {color: black;}
+.red {color: #cc0033;}
+
+.top {
+  font-size: 25px;
+  position: fixed;
+  top: 2%;
+  left: 5%
+}
+.bottom {
+  transform: rotate(180deg);
+  font-size: 25px;
+  position: fixed;
+  bottom: 2%;
+  right: 5%
+}
+
+#noDeckSpade {
+  position: fixed;
+  font-size: 177px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+#noDecks {
+  position: fixed;
+  font-size: 27px;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size:27px;
+  z-index: -2;
+}
+#createNewDeckButton {
+  position: fixed;
+  top: 67%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: var(--secondary-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+#createNewDeckButton:hover {
+  text-decoration: underline;
+}
+
+
+// Menu styling
 .menu-wrap {
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 1;
+  z-index: 5;
 }
 
 .menu-wrap .toggler {
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 2;
+  z-index: 11;
   cursor: pointer;
   width: 50px;
   height: 50px;
@@ -27,7 +311,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 1;
+  z-index: 10;
   width: 60px;
   height: 60px;
   padding: 1rem;
@@ -53,7 +337,7 @@
 .menu-wrap .hamburger > div:after {
   content: '';
   position: absolute;
-  z-index: 1;
+  z-index: 9;
   top: -10px;
   width: 100%;
   height: 2px;
@@ -81,13 +365,14 @@
 }
 
 /* show menu */
-.menu-wrap .toggler:checked ~ .menu {
-  visibility: visible;
+.menu-wrap .toggler:checked ~ .menu > div {
+  transform: scaleX(1);
+  transition-duration: var(--menu-speed);
 }
 
-.menu-wrap .toggler:checked ~ .menu > div {
-  transform: scale(1);
-  transition-duration: var(--menu-speed);
+.menu-wrap .toggler:checked ~ .menu {
+  visibility: visible;
+  z-index: 8;
 }
 
 .menu-wrap .toggler:checked ~ .menu > div > div {
@@ -99,8 +384,8 @@
 .menu-wrap .menu {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
+  width: 15%;
   height: 100%;
   visibility: hidden;
   overflow: hidden;
@@ -111,9 +396,9 @@
 
 .menu-wrap .menu > div {
   background: var(--overlay-color);
-  border-radius: 50%;
-  width: 200vw;
-  height: 200vw;
+  border-radius: 10%;
+  width: 20vw;
+  height: 100vw;
   display: flex;
   flex: none;
   align-items: center;
@@ -123,9 +408,9 @@
 }
 
 .menu-wrap .menu > div > div {
-  text-align: center;
-  max-width: 90vw;
-  max-height: 100vh;
+  text-align: right;
+  max-width: 20vw;
+  max-height: 50vh;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -152,14 +437,4 @@
   color: #069;
   text-decoration: underline;
   cursor: pointer;
-}
-
-#my-decks-view .deckNameButton {
-  background: none!important;
-  border: none;
-  padding: 2!important;
-  color: black;
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: 32px;
 }

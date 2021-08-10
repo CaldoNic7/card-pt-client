@@ -47,10 +47,10 @@
   7. Set a goal time to complete the deck by
   8. Review past workouts
   9. Easily see my personal record (number of cards completed in the shortest amount of time)
-  10.  Delete a deck
-  11.  Change or update a deck later
-  12.  Easily see each deck and it's assigned exercises and choose between them
-  13.  ...
+  10. Delete a deck
+  11. Change or update a deck later
+  12. Easily see each deck and it's assigned exercises and choose between them
+  13. ...
 
 >>>### Wireframes
   >>>>#### Version 1 - 8/04/21 
@@ -71,8 +71,10 @@
   ![](Images/wireframe/project-2-wireframe-pg-7.png)
 
 >>>### Unsolved Problems/Things to do
-    + move change password to nav menu instead of having it's own view
-    + 
+  + move change password to nav menu instead of having it's own vie
+  + replace delete buttons text with trashcan icon
+  + look into onSignOutButton
+  + create quick create button for deck view
 
 >>## Resources and Entity Relationship Diagrams (ERD)
   >>>### Resources

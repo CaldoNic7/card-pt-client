@@ -14,95 +14,151 @@
     </head>
 
     <body>
-    <div id="top-bar">
-        <h1>CARDio</h1>
-        <div class="menu-wrap">
-          <input type="checkbox" class="toggler">
-          <div class="hamburger"><div></div></div>
-          <div class="menu">
+      <div class="menu-wrap">
+        <input type="checkbox" class="toggler">
+        <div class="hamburger">
+          <div></div>
+        </div>
+        <div class="menu">
+          <div>
             <div>
-              <div>
-                <ul>
-                  <li id="signInFromMenu"><a href="#">Sign-In</a></li>
-                  <li id="signUpFromMenu"><a href="#">Sign-Up</a></li>
-                  <li id="myDecks" class="collapse"><a href="#">My Decks</a></li>
-                  <li id="newDeckButton" class="collapse"><a href="#">New Deck</a></li>
-                  <li id="signOut" class="signOut collapse"><a href="#">Sign-Out</a></li>
-                  <li id="changePasswordButton" class="collapse"><a href="#">Change Password</a></li>
-                </ul>
-              </div>
+              <ul>
+                <li id="signInFromMenu"><a href="#">Sign-In</a></li>
+                <li id="signUpFromMenu"><a href="#">Sign-Up</a></li>
+                <li id="myDecks" class="collapse"><a href="#">My Decks</a></li>
+                <li id="newDeckButton" class="collapse"><a href="#">New Deck</a></li>
+                <li id="signOut" class="signOut collapse"><a href="#">Sign-Out</a></li>
+                <li id="changePasswordButton" class="collapse"><a href="#">Change Password</a></li>
+              </ul>
+                    <div id="change-password-view" class="center collapse">
+                      <h1>Change Password</h1>
+                        <form class="form-control">
+                          <div class="txt_field">
+                            <p id="user-email"></p>
+                          </div>
+                          <div class="txt_field">
+                            <input name="passwords[old]" type="password" required >
+                            <span class="line"></span>
+                            <label>Old Password</label>
+                          </div>
+                          <div class="txt_field">
+                            <input name="passwords[new]" type="password" required >
+                            <span class="line"></span>
+                            <label>New Password</label>
+                          </div>
+                          <input type="submit" value="Submit">
+                        </form>
+                    </div>
             </div>
           </div>
         </div>
-        <div id="messages">
-          <h6 id="successMessage" class=" collapse text-center"><strong>success</strong></h6>
+      </div>
+      <div id="top-bar">
+        <div id="title" class="title">
+        <h1>C<span id="aIcon">♤</span>RDio</h1>
+        </div>
+                <div id="messages">
+          <h6 id="successMessage" class=" collapse text-center"><strong></strong></h6>
           <h6 id="failMessage" class=" collapse text-center"><strong>fail</strong></h6>
           <h6 id="infoMessage" class=" collapse text-center"><strong>other</strong></h6>
         </div>
-    </div>
-
-
+      </div>
+      <div class="placeHolder"></div>
       <div id="start-view" class="startView">
-        <form id="sign-in" class="form-control">
-          <h3 class="h3 text-center">Sign-In</h3><br>
-          <!-- <input name="credentials[email]" id="signInEmail" type="text" value="nick@nic.niccc"><br> -->
-          <input name="credentials[email]" id="signInEmail" type="text" placeholder="example@email.com"><br>
-          <br>
-          <!-- <input name="credentials[password]" id="signInPassword" type="password" value="123"><br> -->
-          <input name="credentials[password]" id="signInPassword" type="password" placeholder="Password"><br>
-          <br>
-          <input type="submit" value="Sign-In">
-        </form>
-      <button id="sign-up-link">Not a member yet? Sign-Up!</button>
-      </div>
-      <div id="sign-up-view" class="signUpView collapse">
-        <form id="sign-up" class="form-control">
-          <h3 class="h3 text-center">Sign-Up</h3><br>
-
-          <input name="credentials[email]" id="signUnEmail" type="text" placeholder="example@email.com"><br>
-          <br>
-          <input name="credentials[password]" id="signUpPassword" type="password" placeholder="Password"><br>
-          <br>
-          <input name="credentials[password_confirmation]" id="confirmSignUpPassword" type="password" placeholder="Confirm Password"><br>
-          <br>
-          <input type="submit" value="Sign-Up">
-        </form>
-      <button id="sign-in-link">Already a member? Sign-In!</button>
-
-      </div>
-      <div id ="deck-view" class="collapse">
-        <form id="deck" class="form-control">
-          <button id="deckname" type="button">Deck Name</button>
-          <input name="deck[name]" id="deckName" type="text" placeholder="Black Hearts"><br>
-          <button id="diamond" type="button">Diamonds</button>
-          <input name="deck[exercises[]" id="diamondsExercise" type="text" placeholder="push-ups"><br>
-          <button id="heart" type="button">Hearts</button>
-          <input name="deck[exercises[]" id="heartsExercise" type="text" placeholder="sit-ups"><br>
-          <button id="club" type="button">Clubs</button>
-          <input name="deck[exercises[]" id="clubsExerercise" type="text" placeholder="squats"><br>
-          <button id="spade" type="button">Spades</button>
-          <input name="deck[exercises[]" id="spadesExerercise" type="text" placeholder="burpees"><br>
-          <button id="deckTimer" type="button">Timer</button>
-          <input name="deck[timer]" id="minutes" type="text"><br>
-          <input type="submit" value="Save Deck">
-        </form>
-      </div>
-      <div id="change-password-view" class="collapse">
-        <!-- <button id="workouts-button" type="button">Workouts</button> -->
-        <div class="changePassword">
-          <form id="change-password" class="form-control">
-            <h3 class="h3 text-center">Change Your Password</h3>
-            <p id="user-email">user email goes here on successful sign-in</p>
-            <input name="passwords[old]" id="oldPassword" type="password" placeholder="Old Password">
-            <input name="passwords[new]" id="newPassword" type="password"
-              placeholder="New Password">
-            <input type="submit" value="Submit">
+        <div class="center">
+          <h1>Sign-In</h1>
+          <form id="sign-in" class="form-control">
+            <div class="txt_field">
+              <input name="credentials[email]" id="signInEmail" type="text" required>
+              <span class="line"></span>
+              <label>Email</label>
+            </div>
+            <div class="txt_field">
+              <input name="credentials[password]" id="signInPassword" type="password" required>
+              <span class="line"></span>
+              <label>Password</label>
+            </div>
+              <input type="submit" value="Sign-In">
+              <div class="nav_link"> Not a member yet? <span id="sign-up-link"> Sign-Up!</span></div>
           </form>
         </div>
       </div>
+
+      <div id="sign-up-view" class="signUpView collapse">
+        <div class="center">
+          <h1>Sign-Up</h1>
+          <form id="sign-up" class="form-control">
+            <div class="txt_field">
+              <input name="credentials[email]" id="signUnEmail" type="text" required>
+              <span class="line"></span>
+              <label>Email</label>
+            </div>
+            <div class="txt_field">
+              <input name="credentials[password]" id="signUpPassword" type="password" required>
+              <span class="line"></span>
+              <label>Password</label>
+            </div>
+            <div class="txt_field">
+              <input name="credentials[password_confirmation]" id="confirmSignUpPassword" type="password" required>
+              <span class="line"></span>
+              <label>Confirm Password</label>
+            </div>
+            <div class="pass"></div>
+            <input type="submit" value="Sign-Up">
+            <div class="nav_link">Already a member? <span id="sign-in-link"> Sign-In!</span></div>
+          </form>
+        </div>
+      </div>
+
+      <div id="deck-view" class=" collapse center">
+        <h1>Create A Deck</h1>
+        <form id="deck" class="form-control">
+          <div class="txt_field">
+            <input id="deckName" name="deck[name]" type="text" required>
+            <span class="line"></span>
+            <label for="deckName" type="text">♠<span class="redIcon">♦</span>♣<span class="redIcon">♥</span> Deck
+              Name:</label>
+          </div>
+          <div class="txt_field">
+            <input name="deck[exercises[]" id="spadesExercise" type="text" required>
+            <span class="line"></span>
+            <label for="spade" type="text">♠ Exercise:</label>
+          </div>
+          <div class="txt_field">
+            <input name="deck[exercises[]" id="diamondsExercise" type="text" required>
+            <span class="line"></span>
+            <label for="diamond" type="text"><span class="redIcon">♦</span>Exercise:</label>
+          </div>
+          <div class="txt_field">
+            <input name="deck[exercises[]" id="clubsExerercise" type="text" required>
+            <span class="line"></span>
+            <label for="club" type="text">♣ Exercise:</label>
+          </div>
+          <div class="txt_field">
+            <input name="deck[exercises[]" id="heartsExerercise" type="text" required>
+            <span class="line"></span>
+            <label for="heart" type="text"><span class="redIcon">♥</span>Exercise:</label>
+          </div>
+          <div class="txt_field">
+            <input name="deck[timer]" id="minutes" type="number" required>
+            <span class="line"></span>
+            <label for="timer" type="text">Timer: minutes (ie. 65)</label>
+          </div>
+          <div class="pass">Autofill?</div>
+          <input type="submit" value="Save Deck">
+          <div class="nav_link">
+            Already have a deck? <a href="#">My Decks</a>
+          </div>
+        </form>
+      </div>
+
+
+
       <div id="my-decks-view"></div>
 
       <div id="update-deck-view" class="collapse"></div>
+
       <div id="emptyView" class="collapse"></div>
+
     </body>
 </html>

@@ -13,6 +13,7 @@ $(() => {
     $('#sign-in').on('submit', authEvents.onSignIn)
     // goe to sign-up View
     $('#sign-up-link').on('click', () => {
+      console.log('sign-up-link clicked')
       formReset()
       manageView(views.signUpView)
     })
@@ -55,9 +56,9 @@ $(() => {
     $('#changePasswordButton').on('click', () => {
       formReset()
       // hides everything except the change password view
-      manageView(views.changePasswordView)
-      // clicks the menu icon to close it
-      $('.toggler').trigger('click')
+      // manageView(views.changePasswordView)
+      console.log('button clicked')
+      $('#change-password-view').toggle()
     })
     // go to my decks view
     $('#myDecks').on('click', authEvents.onIndexDecks)
@@ -113,20 +114,26 @@ $(() => {
     $('#my-decks-view').on('click', '.deckNameButton', authEvents.onShowOneDeck)
     // delete target deck (will make new index api call)
     $('#my-decks-view').on('click', '.deleteDeckFromDecksViewButton', authEvents.onDeleteDeckFromDecksView)
-  })
-  // update deck view listeners
-  $(() => {
-    $('#update-deck-view').on('submit', '.deckUpdate', authEvents.onDeckUpdate)
-    // name button
-    // diamond button
-    // heart button
-    // club button
-    // spade button
-    // 1/4 deck button
-    // 1/2 deck button
-    // 3/4 deck button
-    // full deck button
-    // delete deck button
-    $('#update-deck-view').on('click', '.deleteDeckButton', authEvents.onDeleteDeck)
+    // create a new deck button changes view to deck view.
+    $('#my-decks-view').on('click', '#createNewDeckButton', () => {
+      formReset()
+      // hides everything except deck view
+      manageView(views.deckView)
+    })
+    // update deck view listeners
+    $(() => {
+      $('#update-deck-view').on('submit', '.deckUpdate', authEvents.onDeckUpdate)
+      // name button
+      // diamond button
+      // heart button
+      // club button
+      // spade button
+      // 1/4 deck button
+      // 1/2 deck button
+      // 3/4 deck button
+      // full deck button
+      // delete deck button
+      $('#update-deck-view').on('click', '.deleteDeckButton', authEvents.onDeleteDeck)
+    })
   })
 })
