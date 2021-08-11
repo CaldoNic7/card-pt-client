@@ -1,5 +1,6 @@
-const { store, manageView, manageMenuView, formReset, views } = require('./../store')
+const { store, ownedDecks, manageView, manageMenuView, formReset, views } = require('./../store')
 const { success, fail, setSuccessMessage, setFailMessage } = require('./../messages')
+const { noDecksSpade } = require('./../dynamic_html')
 
 const onSignUpSuccess = function (response) {
   store.email = response.user.email
@@ -13,6 +14,7 @@ const onSignUpSuccess = function (response) {
 
 const onSignInSuccess = function (response) {
   store.user = response.user
+  ownedDecks.length = 0
   $('#user-email').text(`EMAIL: ${store.user.email}`)
   formReset()
   // on successful sign in hides sign-in and sign-up options and shows the rest.
@@ -43,6 +45,7 @@ const onChangePasswordSuccess = function () {
 
 const onCreateDeckSuccess = function (response) {
   store.deck = response.deck
+  ownedDecks.push(store.deck)
   formReset()
   // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
   setSuccessMessage(success.deckSave)
@@ -50,61 +53,69 @@ const onCreateDeckSuccess = function (response) {
 
 const onIndexDecksSuccess = function (response) {
   const allDecks = response.decks
-  const decks = []
+  ownedDecks.length = 0
   allDecks.forEach(deck => {
     if (store.user._id === deck.owner) {
-      decks.push(deck)
+      ownedDecks.push(deck)
     }
-    store.decks = decks
+  })
+  ownedDecks.forEach(deck => {
   })
 
   let decksHtml = ''
 
-  if (decks.length === 0) {
-    decksHtml = `
-      <div id="aceOfSpades" class="outline shadow rounded black">
-        <div class="top"><span class="A">A</span><span>♠</span></div>
-        <h2 id="noDecks" class="red">You haven't created a deck yet!</h2>
-        <h1 id="noDeckSpade">♠</h1>
-        <div id="createNewDeckButton" class="nav_link">Create A New Deck</div>
-        <div class="bottom black"><span>A<span><span>♠</span></div>
-      </div>
-    `
+  if (ownedDecks.length === 0) {
+    decksHtml = `${noDecksSpade}`
+    $('#deck-container').html(decksHtml)
   } else {
-    decks.forEach(deck => {
+    let orderNumber = ownedDecks.length
+    ownedDecks.forEach((deck) => {
       if (store.user._id === deck.owner) {
         decksHtml += `
-      <div class="deck">
-          <div class="deckNameContainer">
-            <span class="editIcon">edit><button type="button" class="deckNameButton" data-id=${deck._id}>${deck.name}</button><button type="button" class="deleteDeckFromDecksViewButton" data-id=${deck._id}>Delete Deck</button></span>
-          </div>
-          <div class="diamondsContainer">
-            <p style="text-transform:uppercase"><strong>DIAMONDS: </strong> ${deck.exercises[0]}</p>
-          </div>
-          <div class="heartsContainer">
-            <p style="text-transform:uppercase"><strong>HEARTS: </strong> ${deck.exercises[1]}</p>
-          </div>
-          <div class="clubsContainer">
-            <p style="text-transform:uppercase"><strong>CLUBS: </strong> ${deck.exercises[2]}</p>
-          </div>
-          <div class="spadesContainer">
-            <p style="text-transform:uppercase"><strong>SPADES: </strong> ${deck.exercises[3]}<p>
-          </div>
-          <div class="timerContainer">
-            <p style="text-transform:uppercase"><strong>TIMER: </strong> ${deck.timer}</p>
-          </div>
+      <div class="deck" style="order: ${orderNumber}">
+            <h1><span class="editIcon">edit><button type="button" class="deckNameButton" data-id=${deck._id}>${deck.name}</button></span>
+              <input type="image" src="public/delete_small.png" id="trashcan" class="trashcanButton" data-id="${deck._id}" style="cursor:pointer">
+            </h1>
+            <form>
+              <div class="txt_field">
+                <input name="deck[exercises[]" type="text" value="${deck.exercises[0]}" required disabled>
+                <span class="line"></span>
+                <label for="spade" type="text">♠</label>
+              </div>
+              <div class="txt_field">
+                <input name="deck[exercises[]" type="text" value="${deck.exercises[1]}" required disabled>
+                <span class="line"></span>
+                <label for="diamond" type="text"><span class="redIcon">♦</span>Exercise:</label>
+              </div>
+              <div class="txt_field">
+                <input name="deck[exercises[]" type="text" value="${deck.exercises[2]}" required disabled>
+                <span class="line"></span>
+                <label for="club" type="text">♣ Exercise:</label>
+              </div>
+              <div class="txt_field">
+                <input name="deck[exercises[]" type="text" value="${deck.exercises[3]}"required disabled>
+                <span class="line"></span>
+                <label for="heart" type="text"><span class="redIcon">♥</span>Exercise:</label>
+              </div>
+              <div class="txt_field">
+                <input name="deck[timer]" type="number" value="${deck.timer}" required disabled>
+                <span class="line"></span>
+                <label for="timer" type="text">Timer: minutes (ie. 65)</label>
+              </div>
+            </form>
       </div>
     `
       }
+      orderNumber--
     })
+    // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
     setSuccessMessage(success.indexDecks)
+    $('#deck-container').html(decksHtml)
   }
 
-  $('#my-decks-view').html(decksHtml)
-  $('.toggler').trigger('click')
+  document.getElementById('checkbox').checked === true ? $('.toggler').trigger('click') : console.log('is not checked')
   formReset()
   manageView(views.myDecksView)
-  // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
 }
 
 const onShowDeckSuccess = function (response) {
@@ -113,8 +124,8 @@ const onShowDeckSuccess = function (response) {
     store.deck.timer = ''
   }
   const deckHtml = `
-    <div class="center deck">
-        <h1>${store.deck.name}</h1>
+    <div class="center">
+        <h1 id="showDeckName">${store.deck.name}</h1>
         <form id="deck" class="deckUpdate form-control">
           <div class="txt_field">
             <input id="deckName" name="deck[name]" type="text" value="${store.deck.name}" required>
@@ -147,10 +158,10 @@ const onShowDeckSuccess = function (response) {
             <span class="line"></span>
             <label for="timer" type="text">Timer: minutes (ie. 65)</label>
           </div>
-          <div class="pass">Back to My Decks?</div>
+          <div id="go-to-my-decks-from-update" class="pass">Back to My Decks?</div>
           <input type="submit" value="Save Deck">
           <div class="nav_link">
-            Want to delete this deck? <span class="deleteDeckButton" data-id="${store.deck._id}">Delete Deck</span></div>
+            Want to delete this deck? <span id="deleteDeckButton" data-id="${store.deck._id}">Delete Deck</span></div>
           </div>
         </form>
     </div>
@@ -162,75 +173,78 @@ const onShowDeckSuccess = function (response) {
   setSuccessMessage(success.showDeck)
 }
 
-const onUpdateDeckSuccess = function () {
+const onUpdateDeckSuccess = function (data) {
+  $('#showDeckName').text(data.deck.name)
   setSuccessMessage(success.updateDeck)
 }
 
 const onDeleteDeckSuccess = function () {
-  setSuccessMessage(success.deleteDeck)
+  setSuccessMessage(success.deleteDeck1)
   manageView(views.emptyView)
   $('.toggler').trigger('click')
 }
 
 const onDeleteDeckFromDecksViewSuccess = function (id) {
-  let decks = store.decks
   let removedDeckName = ''
-  decks.forEach(deck => {
+  ownedDecks.forEach((deck) => {
     if (id === deck._id) {
       removedDeckName = deck.name
     }
   })
-  const newDeck = []
-  decks.forEach(deck => {
-    if (id !== deck._id) {
-      console.log('this is the deck that will be added to the new array', deck)
-      newDeck.push(deck)
+  ownedDecks.forEach((deck) => {
+    if (id === deck._id) {
+      const removedDeckIndex = ownedDecks.indexOf(deck)
+      ownedDecks.splice(removedDeckIndex, 1)
     }
-    store.decks = newDeck
-    decks = store.decks
   })
 
   let decksHtml = ''
-  if (decks.length === 0) {
-    decksHtml = `
-      <div id="aceOfSpades" class="outline shadow rounded black">
-        <div class="top"><span class="A">A</span><span>♠</span></div>
-        <h2 id="noDecks" class="red">You haven't created a deck yet!</h2>
-        <h1 id="noDeckSpade">♠</h1>
-        <button id="createNewDeckButton" class="red">Create A New Deck</button>
-        <div class="bottom black"><span>A<span><span>♠</span></div>
-      </div>
-    `
+
+  if (ownedDecks.length === 0) {
+    decksHtml = `${noDecksSpade}`
+    $('#deck-container').html(decksHtml)
   } else {
-    decks.forEach((deck) => {
+    const orderNumber = ownedDecks.length
+    ownedDecks.forEach((deck) => {
       if (store.user._id === deck.owner) {
         decksHtml += `
-      <div class="deck">
-          <div class="deckNameContainer">
-            <span class="editIcon">edit><button type="button" class="deckNameButton" data-id=${deck._id}>${deck.name}</button><button type="button" class="deleteDeckFromDecksViewButton" data-id=${deck._id}>Delete Deck</button></span>
-          </div>
-          <div class="diamondsContainer">
-            <p style="text-transform:uppercase"><strong>DIAMONDS: </strong> ${deck.exercises[0]}</p>
-          </div>
-          <div class="heartsContainer">
-            <p style="text-transform:uppercase"><strong>HEARTS: </strong> ${deck.exercises[1]}</p>
-          </div>
-          <div class="clubsContainer">
-            <p style="text-transform:uppercase"><strong>CLUBS: </strong> ${deck.exercises[2]}</p>
-          </div>
-          <div class="spadesContainer">
-            <p style="text-transform:uppercase"><strong>SPADES: </strong> ${deck.exercises[3]}<p>
-          </div>
-          <div class="timerContainer">
-            <p style="text-transform:uppercase"><strong>TIMER: </strong> ${deck.timer}</p>
-          </div>
+      <div class="deck" style="order: ${orderNumber}">
+            <h1><span class="editIcon">edit><button type="button" class="deckNameButton" data-id=${deck._id}>${deck.name}</button></span>
+              <input type="image" src="public/delete_small.png" id="trashcan" class="trashcanButton" data-id="${deck._id}" style="cursor:pointer">
+            </h1>
+            <form>
+              <div class="txt_field">
+                <input name="deck[exercises[]" type="text" value="${deck.exercises[0]}" required disabled>
+                <span class="line"></span>
+                <label for="spade" type="text">♠</label>
+              </div>
+              <div class="txt_field">
+                <input name="deck[exercises[]" type="text" value="${deck.exercises[1]}" required disabled>
+                <span class="line"></span>
+                <label for="diamond" type="text"><span class="redIcon">♦</span></label>
+              </div>
+              <div class="txt_field">
+                <input name="deck[exercises[]" type="text" value="${deck.exercises[2]}" required disabled>
+                <span class="line"></span>
+                <label for="club" type="text">♣</label>
+              </div>
+              <div class="txt_field">
+                <input name="deck[exercises[]" type="text" value="${deck.exercises[3]}"required disabled>
+                <span class="line"></span>
+                <label for="heart" type="text"><span class="redIcon">♥</span></label>
+              </div>
+              <div class="txt_field">
+                <input name="deck[timer]" type="number" value="${deck.timer}" required disabled>
+                <span class="line"></span>
+                <label for="timer" type="text">Timer: minutes (ie. 65)</label>
+              </div>
+            </form>
       </div>
     `
       }
+      $('#deck-container').html(decksHtml)
     })
   }
-
-  $('#my-decks-view').html(decksHtml)
 
   $('#failMessage').hide()
   $('#successMessage').text(`${removedDeckName}${success.deleteDeck2}`).show()

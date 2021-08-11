@@ -42,7 +42,6 @@ const onSignOutButton = function () {
 const onChangePassword = function (e) {
   e.preventDefault()
   const data = getFormFields(this)
-  console.log(data)
 
   api.changePassword(data)
     .then(ui.onChangePasswordSuccess)
@@ -83,7 +82,7 @@ const onDeckUpdate = function (e) {
   const id = store.deck._id
 
   api.updateDeck(id, data)
-    .then(ui.onUpdateDeckSuccess)
+    .then(ui.onUpdateDeckSuccess(data))
     .catch(ui.onUpdateDeckFail)
 }
 
@@ -100,6 +99,7 @@ const onDeleteDeckFromDecksView = function (e) {
   const id = $(deleteDeck).data('id')
   // ui.onDeleteDeckFromDecksViewSuccess(id)
   api.deleteDeck(id)
+    // .then(onIndexDecks)
     .then(ui.onDeleteDeckFromDecksViewSuccess(id))
     .catch(ui.onDeleteDeckFail)
 }

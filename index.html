@@ -2,7 +2,7 @@
 <html>
 
     <head>
-      <title>CARDio</title>
+      <title>C♤RDio</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -15,12 +15,13 @@
 
     <body>
       <div class="menu-wrap">
-        <input type="checkbox" class="toggler">
+        <input id="checkbox" type="checkbox" class="toggler">
         <div class="hamburger">
           <div></div>
         </div>
         <div class="menu">
-          <div>
+          <!-- <div class="menu container css-transitions-only-after-page-load"> -->
+          <div id="overlay">
             <div>
               <ul>
                 <li id="signInFromMenu"><a href="#">Sign-In</a></li>
@@ -30,42 +31,24 @@
                 <li id="signOut" class="signOut collapse"><a href="#">Sign-Out</a></li>
                 <li id="changePasswordButton" class="collapse"><a href="#">Change Password</a></li>
               </ul>
-                    <div id="change-password-view" class="center collapse">
-                      <h1>Change Password</h1>
-                        <form class="form-control">
-                          <div class="txt_field">
-                            <p id="user-email"></p>
-                          </div>
-                          <div class="txt_field">
-                            <input name="passwords[old]" type="password" required >
-                            <span class="line"></span>
-                            <label>Old Password</label>
-                          </div>
-                          <div class="txt_field">
-                            <input name="passwords[new]" type="password" required >
-                            <span class="line"></span>
-                            <label>New Password</label>
-                          </div>
-                          <input type="submit" value="Submit">
-                        </form>
-                    </div>
             </div>
           </div>
         </div>
       </div>
-      <div id="top-bar">
+      <div id="top-bar" class="shadow">
         <div id="title" class="title">
         <h1>C<span id="aIcon">♤</span>RDio</h1>
         </div>
-                <div id="messages">
-          <h6 id="successMessage" class=" collapse text-center"><strong></strong></h6>
-          <h6 id="failMessage" class=" collapse text-center"><strong>fail</strong></h6>
-          <h6 id="infoMessage" class=" collapse text-center"><strong>other</strong></h6>
+          <div id="messages">
+            <h6 id="successMessage" class=" collapse text-center"><strong></strong>
+            </h6>
+            <h6 id="failMessage" class=" collapse text-center"><strong>fail</strong>
+            </h6>
         </div>
       </div>
       <div class="placeHolder"></div>
       <div id="start-view" class="startView">
-        <div class="center">
+        <div class="center shadow">
           <h1>Sign-In</h1>
           <form id="sign-in" class="form-control">
             <div class="txt_field">
@@ -84,7 +67,7 @@
         </div>
       </div>
 
-      <div id="sign-up-view" class="signUpView collapse">
+      <div id="sign-up-view" class="signUpView">
         <div class="center">
           <h1>Sign-Up</h1>
           <form id="sign-up" class="form-control">
@@ -110,55 +93,81 @@
         </div>
       </div>
 
-      <div id="deck-view" class=" collapse center">
-        <h1>Create A Deck</h1>
-        <form id="deck" class="form-control">
-          <div class="txt_field">
-            <input id="deckName" name="deck[name]" type="text" required>
-            <span class="line"></span>
-            <label for="deckName" type="text">♠<span class="redIcon">♦</span>♣<span class="redIcon">♥</span> Deck
-              Name:</label>
-          </div>
-          <div class="txt_field">
-            <input name="deck[exercises[]" id="spadesExercise" type="text" required>
-            <span class="line"></span>
-            <label for="spade" type="text">♠ Exercise:</label>
-          </div>
-          <div class="txt_field">
-            <input name="deck[exercises[]" id="diamondsExercise" type="text" required>
-            <span class="line"></span>
-            <label for="diamond" type="text"><span class="redIcon">♦</span>Exercise:</label>
-          </div>
-          <div class="txt_field">
-            <input name="deck[exercises[]" id="clubsExerercise" type="text" required>
-            <span class="line"></span>
-            <label for="club" type="text">♣ Exercise:</label>
-          </div>
-          <div class="txt_field">
-            <input name="deck[exercises[]" id="heartsExerercise" type="text" required>
-            <span class="line"></span>
-            <label for="heart" type="text"><span class="redIcon">♥</span>Exercise:</label>
-          </div>
-          <div class="txt_field">
-            <input name="deck[timer]" id="minutes" type="number" required>
-            <span class="line"></span>
-            <label for="timer" type="text">Timer: minutes (ie. 65)</label>
-          </div>
-          <div class="pass">Autofill?</div>
-          <input type="submit" value="Save Deck">
-          <div class="nav_link">
-            Already have a deck? <a href="#">My Decks</a>
-          </div>
-        </form>
+      <div id="deck-view">
+        <div class="center">
+          <h1>Create A Deck</h1>
+          <form id="deck" class="form-control">
+            <div class="txt_field">
+              <input id="deckName" name="deck[name]" type="text" required>
+              <span class="line"></span>
+              <label for="deckName" type="text">♠<span class="redIcon">♦</span>♣<span class="redIcon">♥</span> Deck
+                Name:</label>
+            </div>
+            <div class="txt_field">
+              <input name="deck[exercises[]" id="spadesExercise" type="text" required>
+              <span class="line"></span>
+              <label for="spade" type="text">♠ Exercise:</label>
+            </div>
+            <div class="txt_field">
+              <input name="deck[exercises[]" id="diamondsExercise" type="text" required>
+              <span class="line"></span>
+              <label for="diamond" type="text"><span class="redIcon">♦</span>Exercise:</label>
+            </div>
+            <div class="txt_field">
+              <input name="deck[exercises[]" id="clubsExercise" type="text" required>
+              <span class="line"></span>
+              <label for="club" type="text">♣ Exercise:</label>
+            </div>
+            <div class="txt_field">
+              <input name="deck[exercises[]" id="heartsExercise" type="text" required>
+              <span class="line"></span>
+              <label for="heart" type="text"><span class="redIcon">♥</span>Exercise:</label>
+            </div>
+            <div class="txt_field">
+              <input name="deck[timer]" id="minutes" type="number" required>
+              <span class="line"></span>
+              <label for="timer" type="text">Timer: minutes (ie. 65)</label>
+            </div>
+            <div id="autofill" class="pass">Autofill?</div>
+            <input type="submit" value="Save Deck">
+            <div class="nav_link">
+              Already have a deck?<span id="go-to-my-decks">My Decks!</span>
+            </div>
+          </form>
+        </div>
       </div>
 
 
+      <div id="my-decks-view">
+        <div id="deck-container" class="wrap"></div>
+      </div>
 
-      <div id="my-decks-view"></div>
+      <div id="update-deck-view"></div>
 
-      <div id="update-deck-view" class="collapse"></div>
+      <div id="change-password-view">
+        <div class="center">
+          <h1>Change Password</h1>
+          <form id="change-password" class="form-control">
+            <div class="txt_field">
+              <p id="user-email"></p>
+            </div>
+            <div class="txt_field">
+              <input name="passwords[old]" type="password" required>
+              <span class="line"></span>
+              <label>Old Password</label>
+            </div>
+            <div class="txt_field">
+              <input name="passwords[new]" type="password" required>
+              <span class="line"></span>
+              <label>New Password</label>
+            </div>
+            <input  type="submit" value="Submit">
+          </form>
+        </div>
+      </div>
+
 
       <div id="emptyView" class="collapse"></div>
-
     </body>
+
 </html>

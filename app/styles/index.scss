@@ -4,79 +4,161 @@
   --overlay-color: rgba(0, 0, 0, 0.77);
   --secondary-color: rgba(204,0,51, 1);
   --menu-speed: 0.75s;
+  --gradient-color: linear-gradient(95deg, rgb(0, 0, 0),rgba(0, 0, 0, .9),rgba(204,0,51, 1), rgba(255, 0, 75, 1))
 }
+// .css-transitions-only-after-page-load * {
+//   -webkit-transition: none !important;
+//   -moz-transition: none !important;
+//   -ms-transition: none !important;
+//   -o-transition: none !important;
+//   transition: none !important;
+// }
 
 
 body {
-  box-sizing: border-box;
-  display:block;
   margin: 0;
   padding: 0;
   font-family: montserrat;
-  background-image: linear-gradient(95deg, rgb(0, 0, 0),rgba(0, 0, 0, .9),rgba(204,0,51, 1), rgba(255, 0, 75, 1));
+  background-image: var(--gradient-color);
   background-size: 200%;
   height: 100vh;
-  overflow: hidden;
-  animation: bg-animation 15s infinite alternate-reverse;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  animation: bg-animation 27s infinite alternate-reverse;
   z-index: -5;
 }
+
+#sign-up-view,
+#deck-view,
+#my-decks-view,
+#update-deck-view,
+#change-password-view {
+display: none;
+}
+
+
+#start-view,
+#sign-up-view[style*="display: block"],
+#deck-view[style*="display: block"],
+#my-decks-view[style*="display: block"],
+#update-deck-view[style*="display: block"],
+#change-password-view[style*="display: block"] {
+position: relative;
+top: 25%;
+display:flex;
+align-content: center;
+justify-content: center;
+width: 100%;
+padding:0;
+margin: 0 auto;
+}
+
 #top-bar {
-  box-sizing: border-box;
   position: fixed;
+  top:0%;
   justify-content: center;
   align-items: center;
-  height: 7vh;
+  min-height: 45px;
+  max-height: 70px;
   width: 100vw;
   background: white;
 }
 .placeHolder {
-  box-sizing: border-box;
   position: static;
   justify-content: center;
   align-items: center;
-  height: 7vh;
-  width: 100vw;;
+  min-height: 2vh;
+  max-height: 4vh;
+  width: 100vw;
 }
 .title {
-  box-sizing: border-box;
-  position: fixed;
+  position: absolute;
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
-  height: 7vh;
-  padding: 5px;
-  margin: 5px auto;
+  align-content: flex-start;
+  padding: 10px 0px 2px 10px;
   color: rgb(0, 0, 0);
+  font-size: 2rem;
 }
 
 #aIcon {
   color: var(--secondary-color);
-  font-size: 3rem;
+  }
+
+// messages styling
+#messages {
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bolder;
+  color: black;
+  height: 7vh;
+  width: 50%;
+  margin: 0 auto;
+  z-index: 4;
+}
+
+#failMessage {
+  color:rgba(204,0,51, .95)
+}
+
+#deck-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: 0 auto;
 }
 
 // form styling
 .center {
-  position: fixed;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -25%);
-  width: 400px;
+
+  width: 450px;
+  min-width: fit-content;
+  // max-height: 50vh;
+  // min-height: 10vh;
   background: white;
   border-radius: 7px;
+  margin: 0 auto;
 }
-#change-password-view {
-  position: fixed;
-  top: 57%;
-  left: 50%;
-  transform: translate(-50%, -25%);
-  width: 400px;
+.deck {
+  flex-basis: 450px;
+  max-width: 25vw;
+  min-width: fit-content;
+  max-height: 50vh;
+  min-height: 10vh;
   background: white;
   border-radius: 7px;
+  margin: 4px;
+  padding: 5px;
 }
+
+
+
+// #change-password-view {
+//   position: absolute;
+//   top: 57%;
+//   left: 50%;
+//   transform: translate(-50%, -25%);
+//   max-width: 400px;
+//   background: white;
+//   border-radius: 7px;
+// }
+
 .center h1{
+  text-transform: uppercase;
   text-align: center;
-  padding: 0 0 20px 0;
-  border-bottom: 1px solid silver;
+  padding: 0 0 10px 0;
+  // border-bottom: 1px solid silver;
+}
+.deck h1{
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .center form {
@@ -96,6 +178,12 @@ form .txt_field {
   font-size: 16px;
   border: none;
   outline: none;
+}
+
+#deck-view .txt_field input,
+#my-decks-view .txt_field input,
+#update-deck-view.txt_field input {
+  text-transform: uppercase;
 }
 
 .txt_field label {
@@ -120,13 +208,15 @@ form .txt_field {
   transition: .5s;
 }
 .txt_field input:focus ~ label,
-.txt_field input:valid ~ label  {
+.txt_field input:valid ~ label,
+.txt_field input:disabled ~ label {
   top: -5px;
   color: rgb(0, 0, 0);
   transition: .5s;
 }
 .txt_field input:focus ~ label .redIcon,
-.txt_field input:valid ~ label .redIcon {
+.txt_field input:valid ~ label .redIcon,
+.txt_field input:disabled ~ label .redIcon {
   top: -5px;
   color: rgb(204, 0, 51);
   transition: 2s;
@@ -151,14 +241,14 @@ input[type="submit"] {
   width: 100%;
   height: 50px;
   border: 2px solid;
-  background-image: linear-gradient(95deg, rgb(0, 0, 0),rgba(0, 0, 0, .9),rgba(204,0,51, 1), rgba(255, 0, 75, 1)) ;
+  background-image: var(--gradient-color); ;
   background-size: 200%;
   border-radius: 25px;
   font-size: 18px;
   color: #e9f4fb;
   cursor: pointer;
   outline: none;
-  animation: bg-animation 14s infinite alternate-reverse;
+  animation: bg-animation 25s infinite alternate-reverse;
 }
 input[type="submit"]:hover {
   border-color: rgba(204, 0, 51, .7);
@@ -185,24 +275,7 @@ input[type="submit"]:hover {
 .nav_link span:hover {
   text-decoration: underline;
 }
-// messages styling
-#messages {
-  position: sticky;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-weight: bolder;
-  color: white;
-  height: 7vh;
-  width: 50%;
-  margin: 0 auto;
-  z-index: 4;
-}
 
-#failMessage {
-  color:rgba(204,0,51, .95)
-}
 // decks view css
 .editIcon {
   font-size: 12px;
@@ -293,7 +366,9 @@ span .A {display: block;}
   position: fixed;
   top: 0;
   right: 0;
+  height: 100%;
   z-index: 5;
+  box-shadow: 4px 2px rgba (38, 12, 12, .6);
 }
 
 .menu-wrap .toggler {
@@ -364,28 +439,11 @@ span .A {display: block;}
   transform: rotate(360deg);
 }
 
-/* show menu */
-.menu-wrap .toggler:checked ~ .menu > div {
-  transform: scaleX(1);
-  transition-duration: var(--menu-speed);
-}
-
-.menu-wrap .toggler:checked ~ .menu {
-  visibility: visible;
-  z-index: 8;
-}
-
-.menu-wrap .toggler:checked ~ .menu > div > div {
-  opacity: 1;
-  transition: opacity 0.4s ease;
-}
-/* --- */
-
 .menu-wrap .menu {
   position: fixed;
   top: 0;
   right: 0;
-  width: 15%;
+  width: 100%;
   height: 100%;
   visibility: hidden;
   overflow: hidden;
@@ -394,21 +452,22 @@ span .A {display: block;}
   justify-content: center;
 }
 
+
 .menu-wrap .menu > div {
   background: var(--overlay-color);
   border-radius: 10%;
-  width: 20vw;
+  width: 100%;
   height: 100vw;
   display: flex;
   flex: none;
   align-items: center;
   justify-content: center;
   transform: scale(0);
-  transition: all 0.4s ease;
+  transition: all .04s ease;
 }
 
 .menu-wrap .menu > div > div {
-  text-align: right;
+  text-align: center;
   max-width: 20vw;
   max-height: 50vh;
   opacity: 0;
@@ -427,6 +486,22 @@ span .A {display: block;}
   text-decoration: none;
   transition: color 0.4s ease;
 }
+/* show menu */
+.menu-wrap .toggler:checked ~ .menu > div {
+  transform: scaleX(1);
+  transition-duration: var(--menu-speed);
+}
+
+.menu-wrap .toggler:checked ~ .menu {
+  visibility: visible;
+  z-index: 8;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div > div {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+/* --- */
 
 // makes a button look like a link
 .startView button,
