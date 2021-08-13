@@ -73,7 +73,7 @@ const onIndexDecksSuccess = function (response) {
       if (store.user._id === deck.owner) {
         decksHtml += `
       <div class="deck" style="order: ${orderNumber}">
-            <h1><span class="editIcon">edit><button type="button" class="deckNameButton" data-id=${deck._id}>${deck.name}</button></span>
+            <h1><button type="button" class="deckNameButton" data-id=${deck._id}>${deck.name}</button>
               <input type="image" src="public/delete_small.png" id="trashcan" class="trashcanButton" data-id="${deck._id}" style="cursor:pointer">
             </h1>
             <form>
@@ -113,7 +113,7 @@ const onIndexDecksSuccess = function (response) {
     $('#deck-container').html(decksHtml)
   }
 
-  document.getElementById('checkbox').checked === true ? $('.toggler').trigger('click') : console.log('is not checked')
+  document.getElementById('checkbox').checked === true ? $('.toggler').trigger('click') : $('#dont-show').text('is not checked')
   formReset()
   manageView(views.myDecksView)
 }
@@ -154,7 +154,7 @@ const onShowDeckSuccess = function (response) {
             <label for="heart" type="text"><span class="redIcon">♥</span>Exercise:</label>
           </div>
           <div class="txt_field">
-            <input name="deck[timer]" id="minutes" type="text" value="${store.deck.timer}">
+            <input name="deck[timer]" id="minutes" type="text" value="${store.deck.timer}" required>
             <span class="line"></span>
             <label for="timer" type="text">Timer: minutes (ie. 65)</label>
           </div>
@@ -173,8 +173,47 @@ const onShowDeckSuccess = function (response) {
   setSuccessMessage(success.showDeck)
 }
 
-const onUpdateDeckSuccess = function (data) {
-  $('#showDeckName').text(data.deck.name)
+const onUpdateDeckSuccess = function (id, data) {
+  const deck = data.deck
+  store.deck.name = data.deck.name
+
+  const deckHtml = `
+    <div class="center">
+            <h1><button type="button" class="deckNameButton" data-id=${id}>${deck.name}</button></span>
+              <input type="image" src="public/delete_small.png" id="trashcan" class="trashcanButton" data-id="${id}" style="cursor:pointer">
+            </h1>
+            <form>
+              <div class="txt_field">
+                <input name="deck[exercises[]" type="text" value="${deck.exercises[0]}" required disabled>
+                <span class="line"></span>
+                <label for="spade" type="text">♠</label>
+              </div>
+              <div class="txt_field">
+                <input name="deck[exercises[]" type="text" value="${deck.exercises[1]}" required disabled>
+                <span class="line"></span>
+                <label for="diamond" type="text"><span class="redIcon">♦</span>Exercise:</label>
+              </div>
+              <div class="txt_field">
+                <input name="deck[exercises[]" type="text" value="${deck.exercises[2]}" required disabled>
+                <span class="line"></span>
+                <label for="club" type="text">♣ Exercise:</label>
+              </div>
+              <div class="txt_field">
+                <input name="deck[exercises[]" type="text" value="${deck.exercises[3]}"required disabled>
+                <span class="line"></span>
+                <label for="heart" type="text"><span class="redIcon">♥</span>Exercise:</label>
+              </div>
+              <div class="txt_field">
+                <input name="deck[timer]" type="number" value="${deck.timer}" required disabled>
+                <span class="line"></span>
+                <label for="timer" type="text">Timer: minutes (ie. 65)</label>
+              </div>
+              <div id="go-to-my-decks-from-update" class="pass">Back to My Decks?</div>
+            </form>
+      </div>
+    `
+  /* <div class="pass"><span id="edit-deck" data-id="${store.deck._id}">Edit this deck?</span></div> */
+  $('#update-deck-view').html(deckHtml)
   setSuccessMessage(success.updateDeck)
 }
 
@@ -245,7 +284,7 @@ const onDeleteDeckFromDecksViewSuccess = function (id) {
       $('#deck-container').html(decksHtml)
     })
   }
-
+  manageView(views.myDecksView)
   $('#failMessage').hide()
   $('#successMessage').text(`${removedDeckName}${success.deleteDeck2}`).show()
   setTimeout(() => {

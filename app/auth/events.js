@@ -82,7 +82,7 @@ const onDeckUpdate = function (e) {
   const id = store.deck._id
 
   api.updateDeck(id, data)
-    .then(ui.onUpdateDeckSuccess(data))
+    .then(ui.onUpdateDeckSuccess(id, data))
     .catch(ui.onUpdateDeckFail)
 }
 
@@ -97,9 +97,7 @@ const onDeleteDeck = function (e) {
 const onDeleteDeckFromDecksView = function (e) {
   const deleteDeck = e.target
   const id = $(deleteDeck).data('id')
-  // ui.onDeleteDeckFromDecksViewSuccess(id)
   api.deleteDeck(id)
-    // .then(onIndexDecks)
     .then(ui.onDeleteDeckFromDecksViewSuccess(id))
     .catch(ui.onDeleteDeckFail)
 }

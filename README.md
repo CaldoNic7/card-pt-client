@@ -1,12 +1,12 @@
-># Card PT: a card game like no other!
+# Card PT: a card game like no other!
 
->>## Description
+## Description
 
   This application enables the user to set up a killer workout with nothing but their mobile device and their body. The simple design and intuitive functionality make setting up a custom workout with whatever equipment is available, or with no equipment at all, a smooth process, allowing the user to focus on their godly gains instead of figuring out a complex routine for the day. Users can use it as a supplemental workout with a quick quarter deck round or they can crush an entire group with a full deck round. 
 
   I wanted to create this app because I loved (and hated) card pt when I ran physical training for my team while in the Army, but I often forgot to bring a deck of cards or the cards would get torn up, this way it's right there on your phone nothing extra needed.
 
->>## Important Links
+## Important Links
 
   + [API REPO](https://github.com/CaldoNic7/card-pt)
 
@@ -16,7 +16,7 @@
 
   + [Deployed Client](https://caldonic7.github.io/card-pt-client/)
 
->>## Technologies Used
+## Technologies Used
   
   + jQuery
 
@@ -32,11 +32,10 @@
   
   + Mongodb
 
->>## Planning
+## Planning
   
   Version 1 - August 5th 2021
-
->>>### User Stories
+### User Stories
   As a user I want to be able to ...
   1. Create an account.
   2. Change my password.
@@ -52,33 +51,29 @@
   12. Easily see each deck and it's assigned exercises and choose between them
   13. ...
 
->>>### Wireframes
-  >>>>#### Version 1 - 8/04/21 
-  >>>>>views 1 and 2 
+### Wireframes
+#### Version 1 - 8/04/21 
+views 1 and 2 
 
   ![](Images/wireframe/project-2-wireframe-pg-1and2.png)
 
-  >>>>>views 3 and 4 
+views 3 and 4 
   
   ![](Images/wireframe/project-2-wireframe-pg-3and4.png)
 
-  >>>>>views 5 and 6 
+views 5 and 6 
   
   ![](Images/wireframe/project-2-wireframe-pg-5and6.png)
 
-  >>>>>view 7 
+ view 7 
   
   ![](Images/wireframe/project-2-wireframe-pg-7.png)
+### Unsolved Problems/Things to do
 
->>>### Unsolved Problems/Things to do
-  + move change password to nav menu instead of having it's own vie
-  + replace delete buttons text with trashcan icon
-  + look into onSignOutButton
-  + create quick create button for deck view
 
->>## Resources and Entity Relationship Diagrams (ERD)
-  >>>### Resources
-  >>>>#### User
+## Resources and Entity Relationship Diagrams (ERD)
+### Resources
+#### User
     user: {
      email: {
        type: String,
@@ -90,7 +85,7 @@
      } 
     }
 
-  >>>>#### Deck
+#### Deck
 
     deck: {
       name: {
@@ -105,7 +100,7 @@
     personalRecord: [a pr sub-document]
     }
 
-  >>>>#### Personal Record (pr) sub-document
+#### Personal Record (pr) sub-document
 
 
     pr sub-document: {
@@ -118,15 +113,14 @@
 
 
 
-  >>>### ERD
-  >>>>#### Version 1 - 8/04/21
-  >>>>>##### Diagram 1 
+### ERD
+#### Version 1 - 8/04/21
+##### Diagram 1 
 
   ![](Images/relationship_diagram/project-2-ERD-1.png)
-
->>>### Timeline
-  >>>>#### Version 1
-  >>>>#### Aug 4 & 5 Planning
+### Timeline
+#### Version 1
+#### Aug 4 & 5 Planning
     8/6 ~~ ^ Create README.md ~~
       8/5  ~~ description ~~
       8/6 ~~ important links ~~
@@ -140,7 +134,7 @@
       8/5  ~~ erd ~~
       8/5 ^~~ Develop Timeline ~~
       
-  >>>>#### Aug 5 Set UP
+#### Aug 5 Set UP
 
     8/5  ^ API
       8/5  ~ download express api template
@@ -151,7 +145,7 @@
       8/5  ~ create github repo
       8/5  * commit
 
-   >>>>#### Aug 6 & 7 API
+  #### Aug 6 & 7 API
 
     8/5 crud resources 
     8/5 test resource's end points with postman 
@@ -163,7 +157,7 @@
     8/5   *commit
     8/6 deploy to heroku 
 
-  >>>>#### Aug 8 - 10 Client
+#### Aug 8 - 10 Client
 
     ^ aug 8 (User Account Actions)
       8/6 sign-up 
@@ -193,14 +187,14 @@
       ~testing/troubleshooting/debugging
       ~styling
 
->>## Styling
-  >>>### Fonts
+## Styling
+### Fonts
     ^ header fonts
     ^ body fonts
     ^ accent fonts
 
 
-  >>>### Colors
+### Colors
     ^ background colors
      
     ^ font colors
@@ -211,16 +205,12 @@
     
     ^ accent colors
 
-  >>>### Images
-  >>>>#### Backgrounds
+### Images
+#### Backgrounds
   + [header background](https://stock.adobe.com/images/the-suits-of-the-deck-of-playing-cards-on-background-of-splashing-vector-illustration/223397977)
-  >>>> #### Card Icons
-  + diamonds
-  + hearts
-  + clubs
-  + spades
+
   
-  >>>### Styling Links
+### Styling Links
 
   + [NAV MENU TUTORIAL](https://www.youtube.com/watch?v=DZg6UfS5zYg)
 

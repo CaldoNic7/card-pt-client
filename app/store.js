@@ -39,6 +39,9 @@ const manageMenuView = () => {
   $('#signOut').toggle()
 }
 
+// set form field to disabled
+// let disableForm = (form)
+
 // reset forms
 const formReset = () => $('.form-control').trigger('reset')
 
