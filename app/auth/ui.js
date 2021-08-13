@@ -248,7 +248,7 @@ const onDeleteDeckFromDecksViewSuccess = function (id) {
       if (store.user._id === deck.owner) {
         decksHtml += `
       <div class="deck" style="order: ${orderNumber}">
-            <h1><span class="editIcon">edit><button type="button" class="deckNameButton" data-id=${deck._id}>${deck.name}</button></span>
+            <h1><button type="button" class="deckNameButton" data-id=${deck._id}>${deck.name}</button></span>
               <input type="image" src="public/delete_small.png" id="trashcan" class="trashcanButton" data-id="${deck._id}" style="cursor:pointer">
             </h1>
             <form>
