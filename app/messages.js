@@ -1,45 +1,46 @@
 
 const success = {
-  signIn: 'Success! You are now signed in!',
-  signOut: 'Thank\'s for using CARDio! You are now signed out.',
-  signUp: 'Thank\'s for joining CARDio! Now sign-in, create your deck and crush a workout!',
-  changePW: 'Success! Your password has been updated.',
-  deckSave: 'Deck saved.',
-  indexDecks: 'Request completed successfully. Here are your decks...',
-  showDeck: 'You can now edit this deck.',
+  signIn: 'Success! Now let\'s create a deck!',
+  signOut: 'Thank\'s for using CARDio! Hope to see you back soon!',
+  signUp: 'Success! Now sign in and create a deck!',
+  changePW: 'Success! Password changed, be sure to remember it!',
+  deckSave: 'Deck saved',
+  indexDecks: 'Success! Here are your decks',
+  showDeck: 'You may now edit this deck',
   updateDeck: 'Updates saved!',
-  deleteDeck1: 'Deck has been deleted.',
-  deleteDeck2: ' has been deleted'
-
+  deleteDeck1: 'Deck deleted',
+  deleteDeck2: ' deleted'
 }
 
 const fail = {
-  general: 'Uh Oh! Something went wrong. Please try again.',
-  signUp: 'Sign-Up failed. Please try again.',
-  signIn: 'Sign-In failed. Please try again',
-  signOut: 'sign-Out failed. Please try again',
-  deckSave: 'Sorry, we were unable to save your deck. Please check that you have filled out all required fields and that the information is the correct data type and then try again',
-  indexDecks: 'Sorry, we were unable to show your decks.',
-  showOneDeck: 'Sorry, we were unable to show this deck.',
-  updateDeck: 'Sorry, we were unable to save your Updates. Please check that you have filled out all required fields and that the information is the correct data type and then try again.',
-  deleteDeck: 'Sorry, we were unable to delete this deck.',
-  noDecks: 'Looks like you haven\'t created a deck yet.'
+  general: 'Uh Oh! Something went wrong...',
+  signUp: 'Sign-Up failed.',
+  signIn: 'Sign-In failed.',
+  signOut: 'sign-Out failed.',
+  deckSave: 'Sorry, we were unable to save this deck',
+  showOneDeck: 'Sorry, we can\'t show that deck right now',
+  updateDeck: 'Sorry, we were unable to update that deck. ',
+  deleteDeck: 'Delete Failed',
+  noDecks: 'Sorry, you don\'t have any decks to show'
 }
 
 // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage if it happens to be showing.
 const setSuccessMessage = function (message) {
   $('#failMessage').hide()
+  $('#successMessage').hide()
   $('#successMessage').text(message).show()
-  setTimeout(() => {
-    $('#successMessage').hide()
-  }, 4500)
+  hideMessage($('#successMessage'))
+}
+const hideMessage = (element) => {
+  setTimeout(() => { element.hide() }, 3500)
 }
 
 // chooses the fail message to show via the parameter, updates, shows and sets a timeout on the #failMessage html element text, and hides the #successMessage if it happens to be showing.
 const setFailMessage = function (message) {
   $('#successMessage').hide()
+  $('#failMessage').hide()
   $('#failMessage').text(message).show()
-  setTimeout(() => { $('#failMessage').hide() }, 5500)
+  hideMessage($('#failMessage'))
 }
 
 module.exports = {
@@ -47,4 +48,6 @@ module.exports = {
   fail,
   setSuccessMessage,
   setFailMessage
+  // alertSuccess,
+  // alertFail
 }

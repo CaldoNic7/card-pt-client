@@ -89,7 +89,7 @@ $(() => {
       const array = []
       while (array.length < 4) {
         const exercise = exercises[Math.floor(Math.random() * exercises.length)]
-        array.indexOf(exercise) === -1 ? array.push(exercise) : $('#dont-show').text('exercise already used, getting new exercise')
+        array.indexOf(exercise) === -1 && array.push(exercise)
       }
       $('#spadesExercise').val(array[0])
       $('#diamondsExercise').val(array[1])
@@ -97,34 +97,39 @@ $(() => {
       $('#heartsExercise').val(array[3])
       $('#deckName').val(randomDeckNames[Math.floor(Math.random() * randomDeckNames.length)])
     })
-  })
 
-  // my decks view listeners
-  $(() => {
+    // my decks view listeners
+    $(() => {
     // edit target deck (will go back to deck view and load all of the data for that deck)
-    $('#deck-container').on('click', '.deckNameButton', authEvents.onShowOneDeck)
-    // delete target deck (will make new index api call)
-    $('#deck-container').on('click', '#trashcan', authEvents.onDeleteDeckFromDecksView
-    )
-    // create a new deck button changes view to deck view.
-    $('#deck-container').on('click', '#createNewDeckButton', () => {
+      $('#deck-container').on('click', '.deckNameButton', authEvents.onShowOneDeck)
+      // delete target deck (will make new index api call)
+      $('#deck-container').on('click', '#trashcan', authEvents.onDeleteDeckFromDecksView)
+      // create a new deck button changes view to deck view.
+      $('#deck-container').on('click', '#createNewDeckButton', () => {
+        formReset()
+        // hides everything except deck view
+        manageView(views.deckView)
+      })
+    })
+
+    // update deck view listeners
+    $(() => {
+      $('#update-deck-view').on('submit', '#deck', authEvents.onDeckUpdate)
+      $('#update-deck-view').on('click', '.deckNameButton', authEvents.onShowOneDeck)
+      $('#update-deck-view').on('click', '#deleteDeckButton', authEvents.onDeleteDeck)
+      $('#update-deck-view').on('click', '#trashcan', authEvents.onDeleteDeckFromDecksView)
+      $('#update-deck-view').on('click', '#go-to-my-decks-from-update', () => {
+        authEvents.onIndexDecks()
+      })
+    })
+
+    // empty view listeners
+    $('#emptyView').on('click', '#createNewDeckButton', () => {
       formReset()
-      // hides everything except deck view
       manageView(views.deckView)
     })
-  })
-
-  // update deck view listeners
-  $(() => {
-    $('#update-deck-view').on('submit', '#deck', authEvents.onDeckUpdate)
-    $('#update-deck-view').on('click', '.deckNameButton', authEvents.onShowOneDeck)
-    $('#update-deck-view').on('click', '#deleteDeckButton', authEvents.onDeleteDeck)
-    $('#update-deck-view').on('click', '#trashcan', authEvents.onDeleteDeckFromDecksView)
-    $('#update-deck-view').on('click', '#go-to-my-decks-from-update', () => {
+    $('#emptyView').on('click', '#go-to-my-decks', () => {
       authEvents.onIndexDecks()
-      // $('.toggler').trigger('click')
     })
   })
 })
-
-//

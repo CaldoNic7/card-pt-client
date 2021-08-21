@@ -6,13 +6,6 @@
   --menu-speed: 0.75s;
   --gradient-color: linear-gradient(95deg, rgb(0, 0, 0),rgba(0, 0, 0, .9),rgba(204,0,51, 1), rgba(255, 0, 75, 1))
 }
-// .css-transitions-only-after-page-load * {
-//   -webkit-transition: none !important;
-//   -moz-transition: none !important;
-//   -ms-transition: none !important;
-//   -o-transition: none !important;
-//   transition: none !important;
-// }
 
 
 body {
@@ -42,7 +35,8 @@ display: none;
 #deck-view[style*="display: block"],
 #my-decks-view[style*="display: block"],
 #update-deck-view[style*="display: block"],
-#change-password-view[style*="display: block"] {
+#change-password-view[style*="display: block"],
+#empty-view {
 position: relative;
 top: 25%;
 display:flex;
@@ -56,10 +50,11 @@ margin: 0 auto;
 #top-bar {
   position: fixed;
   top:0%;
+  display:flex;
   justify-content: center;
   align-items: center;
-  min-height: 45px;
-  max-height: 70px;
+  min-height: 75px;
+  max-height: 100px;
   width: 100vw;
   background: white;
   z-index: 5;
@@ -73,8 +68,9 @@ margin: 0 auto;
   width: 100vw;
 }
 .title {
-  position: absolute;
+  // position: absolute;
   display: flex;
+  align-self: flex-start;
   justify-content: flex-start;
   align-content: flex-start;
   padding: 10px 0px 2px 10px;
@@ -88,21 +84,41 @@ margin: 0 auto;
 
 // messages styling
 #messages {
-  position: sticky;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding:0;
+  margin: 0 auto;
   text-align: center;
   font-weight: bolder;
   color: black;
-  height: 7vh;
-  width: 50%;
+  border-radius: 80px;
+  z-index: 8;
+
+}
+
+#successMessage {
+  color: white;
+  background: rgba(76, 181, 67, .6);
+  border: 1px solid black;
+  width: 17%;
+  transform: translateX(-25%);
+  padding: 7px;
   margin: 0 auto;
-  z-index: 4;
+  border-radius: 80px;
+  z-index: 8;
 }
 
 #failMessage {
-  color:rgba(204,0,51, .95)
+  color:black;
+  font-weight: 900;
+  background-color: rgba(242, 38, 19, .6);
+  border: 1px solid black;
+  width: 17%;
+  transform: translateX(-25%);
+  padding: 7px;
+  margin: 0 auto;
+  border-radius: 80px;
+  z-index: 8;
 }
 
 #deck-container {
@@ -279,12 +295,15 @@ input[type="submit"]:hover {
   text-decoration: underline;
   text-transform: uppercase;
 }
-.editIcon {
-  font-size: 12px;
-  text-decoration: none;
+
+.navButtons {
+  position: relative;
+  bottom: -65%;
+  display: block;
 }
 
-#aceOfSpades {
+#aceOfSpades,
+#aceOfClubs {
   box-sizing: border-box;
   position: fixed;
   top: 50%;
@@ -295,6 +314,7 @@ input[type="submit"]:hover {
   width: 327px;
   border-radius: 7%;
 }
+
 span .A {display: block;}
 
 .shadow {box-shadow: 2px 4px rgba (38, 12, 12, .5);}
@@ -334,11 +354,8 @@ span .A {display: block;}
   font-size:27px;
   z-index: -2;
 }
-#createNewDeckButton {
-  position: fixed;
-  top: 67%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+#createNewDeckButton,
+#go-to-my-decks {
   text-align: center;
   margin: 30px 0;
   text-align: center;
@@ -347,7 +364,11 @@ span .A {display: block;}
   text-decoration: none;
   cursor: pointer;
 }
-#createNewDeckButton:hover {
+
+
+
+#createNewDeckButton:hover
+#go-to-my-decks:hover {
   text-decoration: underline;
 }
 
@@ -364,8 +385,8 @@ span .A {display: block;}
 
 .menu-wrap .toggler {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 15px;
+  right: 15px;
   z-index: 11;
   cursor: pointer;
   width: 50px;
@@ -375,8 +396,8 @@ span .A {display: block;}
 
 .menu-wrap .hamburger {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;;
+  right: 10px;
   z-index: 10;
   width: 60px;
   height: 60px;

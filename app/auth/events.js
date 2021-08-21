@@ -52,8 +52,7 @@ const onChangePassword = function (e) {
 const onDeckCreation = function (e) {
   e.preventDefault()
   const data = getFormFields(this)
-  api
-    .createDeck(data)
+  api.createDeck(data)
     .then(ui.onCreateDeckSuccess)
     .catch(ui.onCreateDeckFail)
 }

@@ -223,3 +223,5 @@ views 5 and 6
   + [Success/Error Messages](https://codepen.io/alexpivtorak/pen/ByJLoL)
 
   + [Success/Error Messages Alertify.js](https://alertifyjs.com/)
+
+  + [Carousel Decks](https://css-tricks.com/solved-with-css-logical-styling-based-on-the-number-of-given-elements/)

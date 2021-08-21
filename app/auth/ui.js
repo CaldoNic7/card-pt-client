@@ -1,6 +1,6 @@
 const { store, ownedDecks, manageView, manageMenuView, formReset, views } = require('./../store')
 const { success, fail, setSuccessMessage, setFailMessage } = require('./../messages')
-const { noDecksSpade } = require('./../dynamic_html')
+const { noDecksSpade, nothingHereClub } = require('./../dynamic_html')
 
 const onSignUpSuccess = function (response) {
   store.email = response.user.email
@@ -67,6 +67,7 @@ const onIndexDecksSuccess = function (response) {
   if (ownedDecks.length === 0) {
     decksHtml = `${noDecksSpade}`
     $('#deck-container').html(decksHtml)
+    setFailMessage(fail.noDecks)
   } else {
     let orderNumber = ownedDecks.length
     ownedDecks.forEach((deck) => {
@@ -219,8 +220,10 @@ const onUpdateDeckSuccess = function (id, data) {
 
 const onDeleteDeckSuccess = function () {
   setSuccessMessage(success.deleteDeck1)
+  const decksHtml = `${nothingHereClub}`
+  $('#emptyView').html(decksHtml)
   manageView(views.emptyView)
-  $('.toggler').trigger('click')
+  // $('.toggler').trigger('click')
 }
 
 const onDeleteDeckFromDecksViewSuccess = function (id) {
@@ -319,7 +322,7 @@ const onCreateDeckFail = function () {
 
 const onIndexDecksFail = function () {
   // chooses the success message to show via the parameter, updates, shows and sets a timeout on the #successMessage html element text, and hides the #failMessage.
-  setFailMessage(fail.indexDecks)
+  setFailMessage(fail.general)
 }
 
 const onShowDeckFail = function () {
