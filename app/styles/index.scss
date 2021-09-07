@@ -3,182 +3,310 @@
   --primary-color: rgba(204, 0, 51, 0.75);
   --overlay-color: rgba(0, 0, 0, 0.77);
   --secondary-color: rgba(204,0,51, 1);
-  --menu-speed: 0.75s;
-  --gradient-color: linear-gradient(95deg, rgb(0, 0, 0),rgba(0, 0, 0, .9),rgba(204,0,51, 1), rgba(255, 0, 75, 1))
+  --gradient-color: linear-gradient(95deg, rgb(0, 0, 0),rgba(0, 0, 0, 1),rgba(204,0,51, 1), rgba(255, 0, 75, 1));
 }
 
 
 body {
+  height: 100vh;
+  width: 100vw;
   margin: 0;
   padding: 0;
   font-family: montserrat;
-  background-image: var(--gradient-color);
-  background-size: 200%;
-  height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  animation: bg-animation 27s infinite alternate-reverse;
-  z-index: -5;
-}
-
-#sign-up-view,
-#deck-view,
-#my-decks-view,
-#update-deck-view,
-#change-password-view {
-display: none;
+  background-color: rgb(0, 0, 0);
+  // background-image: var(--gradient-color);
+  // background-size: 400%;
+  // height: 100vh;
+  // overflow-y: scroll;
+  // overflow-x: hidden;
+  // animation: bg-animation 17s infinite alternate-reverse;
 }
 
 
-#start-view,
-#sign-up-view[style*="display: block"],
+#start-view {
+  height: 100%;
+  width: 100%;
+}
+
+// Title Styling---
+
+.title {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 0, 75, 1)
+}
+
+@media (min-width: 2000px) {
+  .title:hover {
+    cursor: pointer;
+    color: rgba(255, 0, 75, 1);
+  }
+  .title {
+    color: black;
+    left: 56.2%;
+  }
+}
+
+.title h1 {
+  font-size: 17rem;
+}
+
+@media (max-width: 1500px) {
+  .title h1 {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .title h1 {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .title h1 {
+    font-size: 3.5rem;
+  }
+}
+
+.aIcon {
+  position: relative;
+  color: white;
+  transition: 1s ease-in;
+  }
+
+  .vertiTitle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:rgba(255, 0, 75, 1);
+  text-align: left;
+  display: none;
+  }
+
+  @media (max-width: 800px) {
+    .vertiTitle {
+      display: block;
+    }
+    .title {
+      display: none;
+    }
+  }
+
+  .vertiTitle h1 {
+  font-size: 17rem;
+}
+
+@media (max-width: 1500px) {
+  .vertiTitle  h1 {
+    font-size: 10rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .vertiTitle  h1 {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .vertiTitle  h1 {
+    font-size: 3.5rem;
+  }
+}
+
+.vertiAIcon {
+  position: relative;
+  right: 15%;
+  color: white;
+  }
+
+  .smallIo {
+    font-size: 10rem;
+  }
+
+  @media (max-width: 1500px) {
+  .smallIo  {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .smallIo {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .smallIo  {
+    font-size: 2rem;
+  }
+}
+// ---End title styling
+
+// Deck setup and settings styling
 #deck-view[style*="display: block"],
-#my-decks-view[style*="display: block"],
-#update-deck-view[style*="display: block"],
-#change-password-view[style*="display: block"],
-#empty-view {
+#workout-view[style*="display: block"]{
 position: relative;
-top: 25%;
-display:flex;
+top: 50%;
+transform: translateY(-50%);
+display: flex;
 align-content: center;
 justify-content: center;
 width: 100%;
-padding:0;
+height: fit-content;
+padding: 0;
 margin: 0 auto;
 }
 
-#top-bar {
-  position: fixed;
-  top:0%;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 75px;
-  max-height: 100px;
-  width: 100vw;
-  background: white;
-  z-index: 5;
-}
-.placeHolder {
-  position: static;
-  justify-content: center;
-  align-items: center;
-  min-height: 2vh;
-  max-height: 4vh;
-  width: 100vw;
-}
-.title {
-  // position: absolute;
-  display: flex;
-  align-self: flex-start;
-  justify-content: flex-start;
-  align-content: flex-start;
-  padding: 10px 0px 2px 10px;
-  color: rgb(0, 0, 0);
-  font-size: 2rem;
+@media (max-width: 500px) {
+  #deck-view[style*="display: block"],
+#workout-view[style*="display: block"]{
+position: relative;
+// top: 50%;
+// transform: translateY(-50%);
+display: flex;
+align-content: center;
+justify-content: center;
+width: 100%;
+height: 100%;
+padding: 0;
+margin: 0 auto;
+overflow: hidden;
 }
 
-#aIcon {
-  color: var(--secondary-color);
-  }
+}
 
-// messages styling
-#messages {
+#deck-settings-view{
+  position: relative;
+  top: 20%;
+  min-width: 350px;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+// hide create deck and deck settings on load---
+#deck-view,
+#deck-settings-view,
+#workout-view {
+display: none;
+}
+
+#settings-overlay {
   width: 100%;
-  height: 100%;
-  padding:0;
+  height: 500px;
   margin: 0 auto;
-  text-align: center;
-  font-weight: bolder;
-  color: black;
-  border-radius: 80px;
-  z-index: 8;
-
+  background: var(--overlay-color);
+  border-radius: 7px;
+  // transform: scale(1);
+  transition: all .04s ease;
 }
 
-#successMessage {
-  color: white;
-  background: rgba(76, 181, 67, .6);
-  border: 1px solid black;
-  width: 17%;
-  transform: translateX(-25%);
-  padding: 7px;
+.closeButton {
+  position: relative;
+  top: 7%;
+  right: -2%;
+  height: 40px;
+  width: 40px;
+  padding: 4px;
+  font-size: 24px;
+  border-radius: 35px;
+  line-height: 1.2;
   margin: 0 auto;
-  border-radius: 80px;
-  z-index: 8;
+  // z-index: 10;
 }
+// ---End deck setup and settings styling
 
-#failMessage {
-  color:black;
-  font-weight: 900;
-  background-color: rgba(242, 38, 19, .6);
-  border: 1px solid black;
-  width: 17%;
-  transform: translateX(-25%);
-  padding: 7px;
-  margin: 0 auto;
-  border-radius: 80px;
-  z-index: 8;
-}
-
-#deck-container {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: space-evenly;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 50%;
-  margin: 0 auto;
-}
-
-// form styling
+// form styling ---
 .center {
-
   width: 450px;
-  min-width: fit-content;
-  // max-height: 50vh;
-  // min-height: 10vh;
+  height: 700px;
+  // min-width: fit-content;
   background: white;
   border-radius: 7px;
   margin: 0 auto;
 }
-.deck {
-  flex-basis: 450px;
-  max-width: 25vw;
-  min-width: fit-content;
-  max-height: 50vh;
-  min-height: 10vh;
-  background: white;
+@media (max-width: 500px) {
+  .center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 90%;
+    height: 90%;
+  }
+}
+
+#deck-settings-view .center {
+  min-width: 300px;
+  max-width: 400px;
+  border: 1px solid black;
+  z-index: 7;
+}
+
+
+#deck {
+  position: relative;
+  top: 2.5%;
+  width: 95%;
+  height: 75%;
   border-radius: 7px;
-  margin: 4px;
-  padding: 5px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+@media (max-width: 500px) {
+  .deck {
+    position: relative;
+    top: 1.5%;
+    border-radius: 7px;
+    margin: 0 auto;
+    padding: 5px;
+    padding-top: 0;
+}
 }
 
 .center h1{
+  width: 95%;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 30px 0 10px 0;
+}
+
+@media (max-width: 500px) {
+  .center h1 {
+  width: 95%;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 15px 0 5px 0;
+}
+}
+
+.center h3{
   text-transform: uppercase;
   text-align: center;
   padding: 0 0 10px 0;
-  // border-bottom: 1px solid silver;
 }
 
-.deck h1{
-  text-transform: uppercase;
-  text-align: center;
-}
+// .deck h1{
+//   text-transform: uppercase;
+//   text-align: center;
+// }
 
 .center form {
   padding: 0 40px;
   box-sizing: border-box;
 }
 
-form .txt_field {
+form .txt-field {
   position: relative;
   border-bottom: 2px solid #adadad;
-  margin: 30px 0;
+  margin: 15px 0;
 }
 
-.txt_field input {
+.txt-field input {
   width: 100%;
   padding: 0 5px;
   height: 40px;
@@ -187,13 +315,11 @@ form .txt_field {
   outline: none;
 }
 
-#deck-view .txt_field input,
-#my-decks-view .txt_field input,
-#update-deck-view.txt_field input {
+#deck-view .txt-field input {
   text-transform: uppercase;
 }
 
-.txt_field label {
+.txt-field label {
   position: absolute;
   top: 50%;
   left: 5px;
@@ -204,7 +330,7 @@ form .txt_field {
   transition: .5s;
 }
 
-.txt_field .line::before{
+.txt-field .line::before{
   content: '';
   position: absolute;
   top: 40px;
@@ -214,24 +340,33 @@ form .txt_field {
   background: linear-gradient(90deg, rgb(0,0,0), rgb(204, 0, 51));
   transition: .5s;
 }
-.txt_field input:focus ~ label,
-.txt_field input:valid ~ label,
-.txt_field input:disabled ~ label {
-  top: -5px;
+.txt-field input:focus ~ label,
+.txt-field input:valid ~ label,
+.txt-field input:disabled ~ label {
+  top: -7px;
   color: rgb(0, 0, 0);
   transition: .5s;
 }
-.txt_field input:focus ~ label .redIcon,
-.txt_field input:valid ~ label .redIcon,
-.txt_field input:disabled ~ label .redIcon {
-  top: -5px;
+.txt-field input:focus ~ label .redIcon,
+.txt-field input:valid ~ label .redIcon,
+.txt-field input:disabled ~ label .redIcon {
+  top: -7px;
   color: rgb(204, 0, 51);
   transition: 2s;
 
 }
-.txt_field input:focus ~ .line::before,
-.txt_field input:valid ~ .line::before {
+.txt-field input:focus ~ .line::before,
+.txt-field input:valid ~ .line::before {
   width: 100%;
+}
+.autofillAndSettings {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.settings {
+  position: relative;
 }
 
 .pass {
@@ -243,6 +378,8 @@ form .txt_field {
 .pass:hover {
   text-decoration:  underline;
 }
+
+
 
 input[type="submit"] {
   width: 100%;
@@ -257,6 +394,7 @@ input[type="submit"] {
   outline: none;
   animation: bg-animation 25s infinite alternate-reverse;
 }
+
 input[type="submit"]:hover {
   border-color: rgba(204, 0, 51, .7);
   transition: .5s;
@@ -282,28 +420,18 @@ input[type="submit"]:hover {
 .nav_link span:hover {
   text-decoration: underline;
 }
+// ---End form styling
 
-// decks view css
+// card styling---
+span .A {display: block;}
 
-.deckNameButton {
-  background: none!important;
-  border: none;
-  padding: 2!important;
-  color: #cc0033;
-  cursor: pointer;
-  font-size: 24px;
-  text-decoration: underline;
-  text-transform: uppercase;
-}
+.shadow {box-shadow: 2px 4px rgba (38, 12, 12, .5);}
+.rounded{ border-radius: 100px;}
+.black {color: black;}
+.red {color: #cc0033;}
 
-.navButtons {
-  position: relative;
-  bottom: -65%;
-  display: block;
-}
-
-#aceOfSpades,
-#aceOfClubs {
+.spades,
+.clubs {
   box-sizing: border-box;
   position: fixed;
   top: 50%;
@@ -312,15 +440,36 @@ input[type="submit"]:hover {
   background: white;
   height: 507px;
   width: 327px;
+  color: black;
+  border: 1px solid black;
   border-radius: 7%;
 }
 
-span .A {display: block;}
+.diamonds,
+.hearts {
+  box-sizing: border-box;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  height: 507px;
+  width: 327px;
+  color:#cc0033;
+  border: 1px solid black;
+  border-radius: 7%;
+}
 
-.shadow {box-shadow: 2px 4px rgba (38, 12, 12, .5);}
-.rounded{ border-radius: 10px;}
-.black {color: black;}
-.red {color: #cc0033;}
+
+@media (max-width: 500px) {
+  .spades,
+  .clubs,
+  .diamonds,
+  .hearts {
+    height: 75%;
+    width: 85%;
+  }
+}
 
 .top {
   font-size: 25px;
@@ -328,6 +477,7 @@ span .A {display: block;}
   top: 2%;
   left: 5%
 }
+
 .bottom {
   transform: rotate(180deg);
   font-size: 25px;
@@ -336,7 +486,7 @@ span .A {display: block;}
   right: 5%
 }
 
-#noDeckSpade {
+.centerIcon {
   position: fixed;
   font-size: 177px;
   top: 50%;
@@ -344,7 +494,8 @@ span .A {display: block;}
   transform: translate(-50%, -50%);
   z-index: -1;
 }
-#noDecks {
+
+.topText {
   position: fixed;
   font-size: 27px;
   top: 25%;
@@ -354,174 +505,13 @@ span .A {display: block;}
   font-size:27px;
   z-index: -2;
 }
-#createNewDeckButton,
-#go-to-my-decks {
+
+.bottomText {
+  position: relative;
+  bottom: -65%;
+  display: block;
   text-align: center;
   margin: 30px 0;
-  text-align: center;
-  font-size: 16px;
-  color: var(--secondary-color);
-  text-decoration: none;
-  cursor: pointer;
+  font-size: 24px;
 }
-
-
-
-#createNewDeckButton:hover
-#go-to-my-decks:hover {
-  text-decoration: underline;
-}
-
-
-// Menu styling
-.menu-wrap {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100%;
-  z-index: 7;
-  box-shadow: 4px 2px rgba (38, 12, 12, .6);
-}
-
-.menu-wrap .toggler {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  z-index: 11;
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-  opacity: 0;
-}
-
-.menu-wrap .hamburger {
-  position: absolute;
-  top: 10px;;
-  right: 10px;
-  z-index: 10;
-  width: 60px;
-  height: 60px;
-  padding: 1rem;
-  background-color: var(--primary-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.menu-wrap .hamburger > div {
-  position: relative;
-  width: 100%;
-  height: 2px;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s ease;
-}
-
-
-.menu-wrap .hamburger > div:before,
-.menu-wrap .hamburger > div:after {
-  content: '';
-  position: absolute;
-  z-index: 9;
-  top: -10px;
-  width: 100%;
-  height: 2px;
-  background: inherit;
-}
-.menu-wrap .hamburger > div:after {
-  top: 10px;
-}
-
-.menu-wrap .toggler:checked + .hamburger > div {
-  transform: rotate(135deg);
-}
-
-.menu-wrap .toggler:checked + .hamburger > div:before,
-.menu-wrap .toggler:checked + .hamburger > div:after {
-  top: 0;
-  transform: rotate(90deg);
-}
-.menu-wrap .toggler:hover + .hamburger > div {
-  transform: rotate(180deg);
-}
-
-.menu-wrap .toggler:checked:hover + .hamburger > div {
-  transform: rotate(360deg);
-}
-
-.menu-wrap .menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.menu-wrap .menu > div {
-  background: var(--overlay-color);
-  border-radius: 10%;
-  width: 100%;
-  height: 100vw;
-  display: flex;
-  flex: none;
-  align-items: center;
-  justify-content: center;
-  transform: scale(0);
-  transition: all .04s ease;
-}
-
-.menu-wrap .menu > div > div {
-  text-align: center;
-  max-width: 20vw;
-  max-height: 50vh;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.menu-wrap .menu > div > div > ul > li {
-  list-style: none;
-  color: white;
-  font-size: 1.5rem;
-  padding: 1rem;
-}
-
-.menu-wrap .menu > div > div > ul > li > a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.4s ease;
-}
-/* show menu */
-.menu-wrap .toggler:checked ~ .menu > div {
-  transform: scaleX(1);
-  transition-duration: var(--menu-speed);
-}
-
-.menu-wrap .toggler:checked ~ .menu {
-  visibility: visible;
-  z-index: 8;
-}
-
-.menu-wrap .toggler:checked ~ .menu > div > div {
-  opacity: 1;
-  transition: opacity 0.4s ease;
-}
-/* --- */
-
-// makes a button look like a link
-.startView button,
-.signUpView button {
-  background: none!important;
-  border: none;
-  padding: 2!important;
-  color: #069;
-  text-decoration: underline;
-  cursor: pointer;
-}
+// ---End card styling

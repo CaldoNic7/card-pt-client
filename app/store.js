@@ -9,48 +9,54 @@ const randomDeckNames = ['Rock of the Marne', 'Bayonets', 'Screaming Eagles', 'A
 
 const views = {
   startView: $('#start-view'),
-  signUpView: $('#sign-up-view'),
   deckView: $('#deck-view'),
-  changePasswordView: $('#change-password-view'),
-  myDecksView: $('#my-decks-view'),
-  updateDeckView: $('#update-deck-view'),
-  emptyView: $('#emptyView')
+  workoutView: $('#workout-view'),
 }
 
 //  hides all views and accepts a single jquery element to show. Also resets all form fields
 const manageView = (viewToShow) => {
   views.startView.hide()
-  views.signUpView.hide()
   views.deckView.hide()
-  views.changePasswordView.hide()
-  views.myDecksView.hide()
-  views.updateDeckView.hide()
-  views.emptyView.hide()
+  views.workoutView.hide()
   viewToShow.show()
 }
 
 // toggles menu items between show and hide to be the opposite of whatever it is now.
-const manageMenuView = () => {
-  $('#signInFromMenu').toggle()
-  $('#signUpFromMenu').toggle()
-  $('#changePasswordButton').toggle()
-  $('#myDecks').toggle()
-  $('#newDeckButton').toggle()
-  $('#signOut').toggle()
-}
+// const manageMenuView = () => {
+//   $('#signInFromMenu').toggle()
+//   $('#signUpFromMenu').toggle()
+//   $('#changePasswordButton').toggle()
+//   $('#myDecks').toggle()
+//   $('#newDeckButton').toggle()
+//   $('#signOut').toggle()
+// }
 
-// set form field to disabled
-// let disableForm = (form)
+// const createNewDeckEnabled = () => {
+//   views.editDeck.hide()
+//   views.startWorkoutButton.hide()
+//   views.saveDeckButton.show()
+//   views.autofill.show()
+//   views.fieldset.prop('disabled') && views.fieldset.prop('disabled', false)
+// }
 
+// const createNewDeckDisabled = () => {
+//   views.editDeck.show()
+//   views.startWorkoutButton.show()
+//   views.saveDeckButton.hide()
+//   views.autofill.hide()
+//   views.fieldset.prop('disabled', true)
+// }
 // reset forms
-const formReset = () => $('.form-control').trigger('reset')
+// const formReset = () => $('.form-control').trigger('reset')
 
 module.exports = {
   store,
   ownedDecks,
   manageView,
-  manageMenuView,
-  formReset,
+  // manageMenuView,
+  // createNewDeckEnabled,
+  // createNewDeckDisabled,
+  // formReset,
   views,
   exercises,
   randomDeckNames
