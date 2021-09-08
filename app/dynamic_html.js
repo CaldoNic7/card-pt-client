@@ -20,7 +20,15 @@ const nothingHereClub = `<div id="aceOfClubs" class=" clubs outline shadow round
         <div class="bottom black"><span>A<span><span>♣</span></div>
       </div>`
 
+const endOfWorkoutCard = `<div id="endCard" class=" clubs outline shadow rounded black">
+        <h1 class="topText red">Great Workout!</h1>
+        <div id="nav-buttons" class="navButtons">
+          <button id="create-new-deck-button" class="nav_link">Start A New Workout</button>
+        </div>
+      </div>`
+
 module.exports = {
   noDecksSpade,
-  nothingHereClub
+  nothingHereClub,
+  endOfWorkoutCard
 }

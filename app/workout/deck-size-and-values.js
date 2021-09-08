@@ -1,4 +1,5 @@
 const { exercises } = require('./../store')
+const { endOfWorkoutCard } = require('./../dynamic_html')
 
 const randomExercise = () => exercises[Math.floor(Math.random() * exercises.length)]
 
@@ -202,7 +203,7 @@ const renderDeck = () => {
 const removeElement = () => {
   assembledDeck.pop()
   if (assembledDeck.length === 0) {
-    $('#workout-view').html('<h1 style="color: red; text-align: center">Great Workout!</h1>')
+    $('#workout-container').html(endOfWorkoutCard)
   } else {
     renderDeck()
   }
