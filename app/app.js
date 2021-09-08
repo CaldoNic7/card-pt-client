@@ -6,7 +6,7 @@ const {
   onChange,
   onRemoveElement
 } = require('./workout/workout-events')
-const { exercises, randomDeckNames, views, manageView } = require('./store')
+const { exercises, randomDeckNames, views, manageView, formReset } = require('./store')
 
 $(() => {
   // start view listener
@@ -55,5 +55,9 @@ $(() => {
   $(() => {
     // complete card
     $('#workout-view').on('click', onRemoveElement)
+    $('#workout-container').on('click', '#create-new-deck-button', () => {
+      formReset()
+      manageView(views.deckView)
+    })
   })
 })

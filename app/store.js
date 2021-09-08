@@ -10,7 +10,7 @@ const randomDeckNames = ['Rock of the Marne', 'Bayonets', 'Screaming Eagles', 'A
 const views = {
   startView: $('#start-view'),
   deckView: $('#deck-view'),
-  workoutView: $('#workout-view'),
+  workoutView: $('#workout-view')
 }
 
 //  hides all views and accepts a single jquery element to show. Also resets all form fields
@@ -47,7 +47,7 @@ const manageView = (viewToShow) => {
 //   views.fieldset.prop('disabled', true)
 // }
 // reset forms
-// const formReset = () => $('.form-control').trigger('reset')
+const formReset = () => $('.form-control').trigger('reset')
 
 module.exports = {
   store,
@@ -56,7 +56,7 @@ module.exports = {
   // manageMenuView,
   // createNewDeckEnabled,
   // createNewDeckDisabled,
-  // formReset,
+  formReset,
   views,
   exercises,
   randomDeckNames
