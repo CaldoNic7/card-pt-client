@@ -44,6 +44,9 @@ let repMultiplier = 1
 // boolean where true = [11,12,13] and false = 10
 let faceVal = false
 
+let cardCount
+let repCount
+
 const repsDefault = [
   { key: 2, value: 2 },
   { key: 3, value: 3 },
@@ -90,6 +93,26 @@ const updateSettings = (data) => {
   faceVal = faceValue
   $('#deck-settings-view').hide()
 }
+const changeSettings = (data) => {
+  const name = data[0]
+  const value = data[1]
+  if (name === 'settings[deckSize]') {
+    deckSize = value
+  } else if (name === 'settings[jokers]') {
+    withJokers = value
+  } else if (name === 'settings[deckQty]') {
+    numOfDecks = value
+  } else if (name === 'settings[aceValue]') {
+    console.log('aceValue is', value)
+    aceVal = value
+  } else if (name === 'settings[faceValue]') {
+    console.log('faceValue is', value)
+    faceVal = value
+  } else if (name === 'settings[multiplier]') {
+    console.log('multiplier is', value)
+    repMultiplier = value
+  }
+}
 
 // changes the size of the deck based on the values of deckSize, withJokers and numbOfDecks.
 const changeDeckSize = () => {
@@ -105,11 +128,79 @@ const changeDeckSize = () => {
   }
 }
 
+// changes the repetition value for each card based on the values of aceVal, faceVal, and repMultiplier
 const repSetter = () => {
   reps.forEach(obj => {
     const index = reps.indexOf(obj)
     obj.value = repsDefault[index].value * repMultiplier
   })
+}
+
+const checkCardCount = () => {
+  cardCount = 0
+  changeDeckSize()
+  cardCount = (deck.length * suits.length) * numOfDecks
+  if (withJokers) {
+    cardCount += (2 * numOfDecks)
+  }
+  $('#card-number').text(cardCount)
+}
+
+const checkRepCount = () => {
+  repCount = 0
+  repSetter()
+  repCount = 0
+  const jokerValue = (reps[13].value + reps[14].value) * numOfDecks
+  if (deckSize === 1) {
+    repCount = 0
+    let i = 0
+    let repsNumForSuit = 0
+    while (i < 9) {
+      repsNumForSuit += reps[i].value * numOfDecks
+      i++
+    }
+    repCount += repsNumForSuit * 4
+    if (withJokers) {
+      repCount += jokerValue
+      $('#joker-value').text(`Joker Value: ${jokerValue}`)
+      $('#joker-value').show()
+    } else {
+      $('#joker-value').hide()
+    }
+    $('#reps-number').text(repCount)
+  } else if (deckSize === 2) {
+    repCount = 0
+    let i = 0
+    let repsNumForSuit = 0
+    while (i < 13) {
+      repsNumForSuit += reps[i].value * numOfDecks
+      i++
+    }
+    repCount = repsNumForSuit * 4
+    if (withJokers) {
+      repCount += jokerValue
+      $('#joker-value').text(`Joker Value: ${jokerValue}`)
+      $('#joker-value').show()
+    } else {
+      $('#joker-value').hide()
+    }
+    $('#reps-number').text(repCount)
+  } else {
+    repCount = 0
+    let i = 10
+    let repsNumForSuit = 0
+    while (i < 14) {
+      repsNumForSuit += reps[i].value * numOfDecks
+      i++
+    }
+    repCount += repsNumForSuit * 4
+    if (withJokers) {
+      repCount += jokerValue
+      $('#joker-value').text(`Joker Value: ${jokerValue}`)
+      $('#joker-value').show()
+    } else { $('#joker-value').hide() }
+    $('#reps-number').text(repCount)
+  }
 }
 
 const assembleDeck = () => {
@@ -215,6 +306,9 @@ module.exports = {
   updateSettings,
   renderDeck,
   removeElement,
+  changeSettings,
+  checkCardCount,
+  checkRepCount,
   assembledDeck,
   repsDefault,
   reps

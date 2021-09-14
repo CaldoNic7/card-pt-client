@@ -1,6 +1,6 @@
 const getFormFields = require('./../../lib/get-form-fields')
 const { generateDeck } = require('./workout-deck')
-const { removeElement, updateSettings } = require('./deck-size-and-values')
+const { removeElement, updateSettings, changeSettings, checkCardCount, checkRepCount } = require('./deck-size-and-values')
 const { manageView, views } = require('../store')
 
 // onStartWorkout
@@ -17,7 +17,6 @@ const onShowSettings = () => {
 
 const onUpdateSettings = function (e) {
   e.preventDefault()
-  console.log(this)
   const data = getFormFields(this)
   if (data.settings.jokers) {
     data.settings.jokers = 'true'
@@ -35,7 +34,10 @@ const onChange = function (e) {
     name = element.name
     value = element.checked
   }
-  console.log(name, value)
+  const data = [name, value]
+  changeSettings(data)
+  checkCardCount()
+  checkRepCount()
 }
 
 const onRemoveElement = () => {
