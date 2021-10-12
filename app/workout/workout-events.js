@@ -30,7 +30,6 @@ const onUpdateSettings = function (e) {
 // When changes are made to deck settings onChange gets the name and value of the setting that was changed and passes it to the changeSettings function, then it checks the current card count and rep count using the checkCardCount and checkRepCount functions
 const onChange = function (e) {
   const element = e.target
-  console.log('changed element is', element)
   let name = element.name
   let value = element.value
   if (element.id === 'jokers') {
@@ -39,11 +38,8 @@ const onChange = function (e) {
   }
   const data = [name, value]
   changeSettings(data)
-  console.log('deck settings changed')
   checkCardCount()
-  console.log('cards counted')
   checkRepCount()
-  console.log('reps counted')
 }
 
 const onRemoveElement = () => {
