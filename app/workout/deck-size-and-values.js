@@ -3,6 +3,7 @@ const { endOfWorkoutCard } = require('./../dynamic_html')
 
 const randomExercise = () => exercises[Math.floor(Math.random() * exercises.length)]
 
+// container for assigning an exercise to a suit
 const suits = [
   { suit: 'spades', exercise: '' },
   { suit: 'diamonds', exercise: '' },
@@ -10,11 +11,14 @@ const suits = [
   { suit: 'hearts', exercise: '' }
 ]
 
+// receives data from onStartWorkout and re-assigns the value of `suits.exercise` for the corresponding  `suits.suit`.
 const suitsExercises = (data) => {
   data.deck.exercises.forEach((exercise, index) => {
     suits[index].exercise = exercise
   })
 }
+
+// used to generate the deck based on the settings selected.
 const ranks = {
   numberCards: [2, 3, 4, 5, 6, 7, 8, 9, 10],
   faceCards: ['J', 'Q', 'K', 'A'],
@@ -27,7 +31,7 @@ let deck = []
 let assembledDeck = []
 
 // deckSize will be 1 (number cards only), 2 (full deck) or 3 (face cards only)
-let deckSize = 1
+let deckSize = 2
 
 // boolean where true includes jokers and false excludes jokers
 let withJokers = false
@@ -94,6 +98,7 @@ const updateSettings = (data) => {
   $('#deck-settings-view').hide()
 }
 const changeSettings = (data) => {
+  console.log(`start change settings values: deckSize-${deckSize}, withJokers-${withJokers}, numOfDecks-${numOfDecks}, aceVal-${aceVal}, faceVal-${faceVal}, repMultiplier-${repMultiplier}, cardCount-${cardCount}, repCount-${repCount}`)
   const name = data[0]
   const value = data[1]
   if (name === 'settings[deckSize]') {
@@ -112,6 +117,9 @@ const changeSettings = (data) => {
     console.log('multiplier is', value)
     repMultiplier = value
   }
+  console.log(
+      `end change settings values: deckSize-${deckSize}, withJokers-${withJokers}, numOfDecks-${numOfDecks}, aceVal-${aceVal}, faceVal-${faceVal}, repMultiplier-${repMultiplier}, cardCount-${cardCount}, repCount-${repCount}`
+  )
 }
 
 // changes the size of the deck based on the values of deckSize, withJokers and numbOfDecks.
@@ -130,13 +138,18 @@ const changeDeckSize = () => {
 
 // changes the repetition value for each card based on the values of aceVal, faceVal, and repMultiplier
 const repSetter = () => {
+  console.log('at start of repSetter', `reps:${reps}`)
   reps.forEach(obj => {
     const index = reps.indexOf(obj)
     obj.value = repsDefault[index].value * repMultiplier
   })
+  console.log('at end of repSetter', `reps:${reps}`)
 }
 
 const checkCardCount = () => {
+  console.log(
+      `start checkCardCount values: deckSize-${deckSize}, withJokers-${withJokers}, numOfDecks-${numOfDecks}, aceVal-${aceVal}, faceVal-${faceVal}, repMultiplier-${repMultiplier}, cardCount-${cardCount}, repCount-${repCount}`
+  )
   cardCount = 0
   changeDeckSize()
   cardCount = (deck.length * suits.length) * numOfDecks
@@ -144,12 +157,17 @@ const checkCardCount = () => {
     cardCount += (2 * numOfDecks)
   }
   $('#card-number').text(cardCount)
+  console.log(
+      `end checkCardCount values: deckSize-${deckSize}, withJokers-${withJokers}, numOfDecks-${numOfDecks}, aceVal-${aceVal}, faceVal-${faceVal}, repMultiplier-${repMultiplier}, cardCount-${cardCount}, repCount-${repCount}`
+  )
 }
 
 const checkRepCount = () => {
+  console.log(
+    `start checkRepCount values: deckSize-${deckSize}, withJokers-${withJokers}, numOfDecks-${numOfDecks}, aceVal-${aceVal}, faceVal-${faceVal}, repMultiplier-${repMultiplier}, cardCount-${cardCount}, repCount-${repCount}`
+  )
   repCount = 0
   repSetter()
-  repCount = 0
   const jokerValue = (reps[13].value + reps[14].value) * numOfDecks
   if (deckSize === 1) {
     repCount = 0
@@ -201,6 +219,9 @@ const checkRepCount = () => {
     } else { $('#joker-value').hide() }
     $('#reps-number').text(repCount)
   }
+  console.log(
+      `end checkRepCount values: deckSize-${deckSize}, withJokers-${withJokers}, numOfDecks-${numOfDecks}, aceVal-${aceVal}, faceVal-${faceVal}, repMultiplier-${repMultiplier}, cardCount-${cardCount}, repCount-${repCount}`
+  )
 }
 
 const assembleDeck = () => {

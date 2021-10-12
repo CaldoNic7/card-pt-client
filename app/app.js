@@ -9,7 +9,7 @@ const {
 const { exercises, randomDeckNames, views, manageView, formReset } = require('./store')
 
 $(() => {
-  // start view listener
+  // start view listeners
   $(() => {
     $('#title').on('click', () => { manageView(views.deckView) })
     $('#vertical-title').on('click', () => { manageView(views.deckView) })
@@ -18,7 +18,7 @@ $(() => {
   $(() => {
     // form - create deck
     $('#deck').on('submit', onStartWorkout)
-    // button - autofill
+    // button - autofill the form to create a deck with exercises
     $('#autofill').on('click', () => {
       $('#minutes').val(function (e, c) {
         c = ''

@@ -38,22 +38,29 @@ body {
   color: rgba(255, 0, 75, 1)
 }
 
-@media (min-width: 2000px) {
-  .title:hover {
-    cursor: pointer;
-    color: rgba(255, 0, 75, 1);
-  }
-  .title {
-    color: black;
-    left: 56.2%;
-  }
+.title:hover {
+  cursor: pointer;
 }
+
+// @media (min-width: 2000px) {
+//   .title:hover {
+//     cursor: pointer;
+//     color: rgba(255, 0, 75, 1);
+//   }
+//   .title {
+//     color: black;
+//     left: 56.2%;
+//   }
+// }
 
 .title h1 {
   font-size: 17rem;
 }
 
 @media (max-width: 1500px) {
+  .title {
+    color: rgba(255, 0, 75, 1);
+  }
   .title h1 {
     font-size: 7rem;
   }
