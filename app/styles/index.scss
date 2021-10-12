@@ -569,11 +569,12 @@ input[type="submit"]:hover,
   text-decoration: underline;
 }
 
-
-
 // ---End form styling
 
 // card styling---
+#workout-container div:hover {
+  cursor: pointer;
+}
 span .A {display: block;}
 
 .shadow {box-shadow: 2px 4px rgba (38, 12, 12, .5);}
