@@ -1,0 +1,695 @@
+@import '~bootstrap/scss/bootstrap';
+:root {
+  --primary-color: rgba(204, 0, 51, 0.75);
+  --overlay-color: rgba(0, 0, 0, 0.77);
+  --secondary-color: rgba(204,0,51, 1);
+  --gradient-color: linear-gradient(95deg, rgb(0, 0, 0),rgba(0, 0, 0, 1),rgba(204,0,51, 1), rgba(255, 0, 75, 1));
+}
+
+
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  font-family: montserrat;
+  background-color: rgb(0, 0, 0);
+  // background-image: var(--gradient-color);
+  // background-size: 400%;
+  // height: 100vh;
+  // overflow-y: scroll;
+  // overflow-x: hidden;
+  // animation: bg-animation 17s infinite alternate-reverse;
+}
+
+
+#start-view {
+  height: 100%;
+  width: 100%;
+}
+
+// Title Styling---
+
+.title {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 0, 75, 1)
+}
+
+.title:hover {
+  cursor: pointer;
+}
+
+// @media (min-width: 2000px) {
+//   .title:hover {
+//     cursor: pointer;
+//     color: rgba(255, 0, 75, 1);
+//   }
+//   .title {
+//     color: black;
+//     left: 56.2%;
+//   }
+// }
+
+.title h1 {
+  font-size: 17rem;
+}
+
+@media (max-width: 1500px) {
+  .title {
+    color: rgba(255, 0, 75, 1);
+  }
+  .title h1 {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .title h1 {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .title h1 {
+    font-size: 3.5rem;
+  }
+}
+
+.aIcon {
+  position: relative;
+  color: white;
+  transition: 1s ease-in;
+  }
+
+  .vertiTitle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:rgba(255, 0, 75, 1);
+  text-align: left;
+  display: none;
+  }
+
+  @media (max-width: 800px) {
+    .vertiTitle {
+      display: block;
+    }
+    .title {
+      display: none;
+    }
+  }
+
+  .vertiTitle h1 {
+  font-size: 17rem;
+}
+
+@media (max-width: 1500px) {
+  .vertiTitle  h1 {
+    font-size: 10rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .vertiTitle  h1 {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .vertiTitle  h1 {
+    font-size: 3.5rem;
+  }
+}
+
+.vertiAIcon {
+  position: relative;
+  right: 15%;
+  color: white;
+  }
+
+  .smallIo {
+    font-size: 10rem;
+  }
+
+  @media (max-width: 1500px) {
+  .smallIo  {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .smallIo {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .smallIo  {
+    font-size: 2rem;
+  }
+}
+// ---End title styling
+
+// Deck setup and settings styling
+#deck-view[style*="display: block"],
+#deck-settings-view[style*="display: block"],
+#workout-view[style*="display: block"]{
+position: relative;
+top: 50%;
+transform: translateY(-50%);
+display: flex;
+align-content: center;
+justify-content: center;
+width: 100%;
+height: fit-content;
+padding: 0;
+margin: 0 auto;
+}
+
+@media (max-width: 500px) {
+#deck-view[style*="display: block"],
+#deck-settings-view[style*="display: block"],
+#workout-view[style*="display: block"]{
+position: relative;
+display: flex;
+align-content: center;
+justify-content: center;
+width: 100%;
+height: 100%;
+padding: 0;
+margin: 0 auto;
+overflow: hidden;
+}
+
+}
+
+#deck-settings-view[style*="display: block"] {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+min-width: 350px;
+max-width: 450px;
+margin: 0 auto;
+}
+// hide create deck and deck settings on load---
+#deck-view,
+#deck-settings-view,
+#workout-view {
+display: none;
+}
+
+#deck-settings-view .center {
+  min-width: 300px;
+  max-width: 400px;
+  height: 90%;
+  border: 1px solid black;
+  z-index: 7;
+}
+
+#deck-settings-view .counters {
+  width: 100%;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+#settings-overlay {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 705px;
+  margin: 0 auto;
+  background: var(--overlay-color);
+  border-radius: 7px;
+}
+
+@media (max-width: 500px) {
+  #settings-overlay {
+    height: 100%;
+    width: 100%;
+  }
+  #settings-overlay button {
+    display: none;
+  }
+  #settings-overlay h3 {
+    display: none;
+  }
+  #settings-overlay .center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 90%;
+    height: 90%;
+    background-color: transparent;
+  }
+  #deck-settings {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 17px;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 300px) {
+  #settings-overlay {
+    height: 100%;
+    width: 100%;
+  }
+  #settings-overlay button {
+    display: none;
+  }
+  #settings-overlay h3 {
+    display: none;
+  }
+  #settings-overlay .center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 90%;
+    height: 90%;
+    background-color: transparent;
+  }
+  #deck-settings {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 17px;
+    width: 90%;
+    height: 97%;
+    margin: 0 auto;
+  }
+}
+.closeButton {
+  position: relative;
+  top: 7%;
+  right: -2%;
+  height: 40px;
+  width: 40px;
+  padding: 4px;
+  font-size: 24px;
+  border-radius: 35px;
+  line-height: 1.2;
+  margin: 0 auto;
+  // z-index: 10;
+}
+
+.deckSettings{
+  text-align: center;
+}
+
+
+input[type=range] {
+  height: 27px;
+  -webkit-appearance: none;
+  // margin: 10px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  // width: 20%;
+  height: 2px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000;
+  background: #000000;
+  border-radius: 17px;
+  border: 1px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 10px;
+  width: 17px;
+  border-radius: 17px;
+  background: #CC0033;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -6px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #000000;
+}
+
+.numberOfCards,
+.cardValues {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  width: 77%;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-bottom: 1px solid #ced4da;
+}
+
+@media (max-width: 500px){
+.numberOfCards,
+.cardValues {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  width: 100%;
+  line-height: 1;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-bottom: 1px solid #ced4da;
+}
+}
+// ---End deck setup and settings styling
+
+// form styling ---
+.center {
+  width: 450px;
+  height: 700px;
+  background: white;
+  border-radius: 7px;
+  margin: 0 auto;
+}
+@media (max-width: 500px) {
+  .center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 90%;
+    height: 90%;
+  }
+}
+
+#deck {
+  position: relative;
+  top: 7.5%;
+  width: 95%;
+  height: 54%;
+  border-radius: 7px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+@media (max-width: 500px) {
+  .deck {
+    position: relative;
+    top: 1.5%;
+    border-radius: 7px;
+    margin: 0 auto;
+    padding: 5px;
+    padding-top: 0;
+}
+}
+
+.center h1{
+  position: relative;
+  top: 2.7%;
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 30px 0 10px 0;
+}
+
+@media (max-width: 500px) {
+  .center h1 {
+  width: 95%;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 15px 0 5px 0;
+}
+}
+
+.center h3, .center .h3 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+center form {
+  padding: 0 20px;
+  height: 90.5%;
+}
+
+form .txt-field {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 15px 0;
+}
+
+.txt-field input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+}
+
+#deck-view .txt-field input {
+  text-transform: uppercase;
+}
+
+.txt-field label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translate&(-50%);
+  width: 100%;
+  font-size: 16px;
+  pointer-events: none;
+  transition: .5s;
+}
+
+
+.txt-field .line::before{
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, rgb(0,0,0), rgb(204, 0, 51));
+  transition: .5s;
+}
+.txt-field input:focus ~ label,
+.txt-field input:valid ~ label,
+.txt-field input:disabled ~ label {
+  top: -7px;
+  color: rgb(0, 0, 0);
+  transition: .5s;
+}
+.txt-field input:focus ~ label .redIcon,
+.txt-field input:valid ~ label .redIcon,
+.txt-field input:disabled ~ label .redIcon {
+  top: -7px;
+  color: rgb(204, 0, 51);
+  transition: 2s;
+
+}
+.txt-field input:focus ~ .line::before,
+.txt-field input:valid ~ .line::before {
+  width: 100%;
+}
+.autofillAndSettings {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.settings {
+  position: relative;
+}
+
+.pass {
+  margin: -5px 0 20px 5px;
+  color: #a6a6a6;
+  cursor: pointer;
+}
+
+.pass:hover {
+  text-decoration:  underline;
+}
+
+
+
+input[type="submit"],
+.newDeckButton {
+  width: 100%;
+  height: 50px;
+  border: 2px solid;
+  background-image: var(--gradient-color); ;
+  background-size: 200%;
+  border-radius: 25px;
+  font-size: 18px;
+  color: #e9f4fb;
+  cursor: pointer;
+  outline: none;
+  animation: bg-animation 25s infinite alternate-reverse;
+}
+
+.newDeckButton {
+  position: relative;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+}
+
+input[type="submit"]:hover,
+.newDeckButton:hover {
+  border-color: rgba(204, 0, 51, .7);
+  transition: .5s;
+}
+
+@keyframes bg-animation {
+  0%{ background-position: left; }
+  100%{ background-position: right; }
+}
+
+.nav_link{
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.nav_link span{
+  color: var(--secondary-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav_link span:hover {
+  text-decoration: underline;
+}
+
+// ---End form styling
+
+// card styling---
+#workout-container div:hover {
+  cursor: pointer;
+}
+span .A {display: block;}
+
+.shadow {box-shadow: 2px 4px rgba (38, 12, 12, .5);}
+.rounded{ border-radius: 100px;}
+.black {color: black;}
+.red {color: #cc0033;}
+
+.spades,
+.clubs {
+  box-sizing: border-box;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  height: 507px;
+  width: 327px;
+  color: black;
+  border: 1px solid black;
+  border-radius: 7%;
+}
+
+.diamonds,
+.hearts {
+  box-sizing: border-box;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  height: 507px;
+  width: 327px;
+  color:#cc0033;
+  border: 1px solid black;
+  border-radius: 7%;
+}
+
+
+@media (max-width: 500px) {
+  .spades,
+  .clubs,
+  .diamonds,
+  .hearts {
+    height: 75%;
+    width: 85%;
+  }
+}
+
+.top {
+  font-size: 25px;
+  position: fixed;
+  top: 2%;
+  left: 5%
+}
+
+.bottom {
+  transform: rotate(180deg);
+  font-size: 25px;
+  position: fixed;
+  bottom: 2%;
+  right: 5%
+}
+
+.centerIcon {
+  position: fixed;
+  font-size: 177px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.topText {
+  position: fixed;
+  font-size: 27px;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size:27px;
+  z-index: -2;
+}
+#endCard .topText {
+  position: relative;
+  top: 45%;
+}
+
+.bottomText {
+  position: relative;
+  bottom: -65%;
+  display: block;
+  text-align: center;
+  margin: 30px 0;
+  font-size: 24px;
+}
+
+.newDeckButton {
+  width: 100%;
+  height: 50px;
+  border: 2px solid;
+  background-image: var(--gradient-color); ;
+  background-size: 200%;
+  border-radius: 25px;
+  font-size: 18px;
+  color: #e9f4fb;
+  cursor: pointer;
+  outline: none;
+  animation: bg-animation 25s infinite alternate-reverse;
+}
+
+.newDeckButton {
+  position: relative;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+}
+// ---End card styling
